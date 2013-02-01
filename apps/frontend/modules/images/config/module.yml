@@ -1,0 +1,65 @@
+all:
+  categories:
+    list:
+      1: landscapes pic
+      6: detail pic
+      3: action pic
+      7: track pic
+      8: rise pic
+      9: descent pic
+      4: topo pic
+      2: people pic
+      10: fauna pic
+      11: flora pic
+      16: snow pic
+      12: geology pic
+      13: hut pic
+      14: equipment pic
+      15: book pic
+      17: help pic
+      5: misc pic
+
+  sort:
+    criteria:
+      'id': ID
+      'date': date short
+      'oid': outing ID
+      'odate': outing date
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'act':  activities
+      'auth': author
+      'icat': categories
+      'ityp': image_type
+      'inam': name
+    filled_criteria:
+      'act': ''
+      'icat': ''
+      'ityp': ''
+
+  type:
+    list: # list does not contain copyright images
+      1: collaborative image
+      2: personal image
+    full_list:
+      1: collaborative image
+      2: personal image
+      3: copyright image # for book-associated images only
+
+  # used to know which fields contain rich content, i.e. bbcode
+  bbcode_fields:
+    areas:    ['description']
+    articles: ['description']
+    books:    ['description']
+    huts:     ['description', 'pedestrian_access']
+    images:   ['description']
+    maps:     ['description']
+    outings:  ['description', 'weather', 'conditions', 'hut_comments', 'access_comments']
+    parkings: ['description', 'accommodation']
+    portals:  ['description']
+    products: ['description']
+    routes:   ['description', 'remarks', 'gear', 'external_resources', 'route_history']
+    sites:    ['description', 'remarks', 'pedestrian_access', 'way_back', 'external_resources', 'site_history']
+    summits:  ['description']
+    users:    ['description']

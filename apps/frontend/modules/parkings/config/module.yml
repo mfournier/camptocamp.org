@@ -1,0 +1,26 @@
+all:
+  snow_clearance_ratings:
+    list:
+      0:
+      1: often cleared
+      2: sometimes cleared
+      3: naturally cleared
+      4: non applicable
+
+  sort:
+    criteria:
+      'id': ID
+      'pnam': 'name'
+      'palt': 'elevation'
+      'tp': 'public_transportation_rating'
+      'tpty': 'public_transportation_types'
+      'scle': 'snow_clearance_rating'
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+    filled_criteria:
+      'tp': ''
+      'tpty': ''
+      'scle': ''

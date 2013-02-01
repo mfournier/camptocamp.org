@@ -1,0 +1,8 @@
+querySuccess:
+  javascripts: [ /static/js/openlayers_sfl/OpenLayers, /static/js/cartoweb/lib/CartoWeb, /static/js/cartoweb/lib/Search, /static/js/cartoweb/lib/SearchForm, /static/js/search, /static/js/fold ]
+  
+getratingsSuccess:
+  has_layout: no
+
+popupSuccess:
+  layout: popup

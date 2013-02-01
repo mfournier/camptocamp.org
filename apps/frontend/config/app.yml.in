@@ -1,0 +1,2202 @@
+# This file do not support more than 4 levels :
+# level_1:
+#   level_2:
+#     level_3:
+#       level_4: value
+#
+# To emulate more than 4 levels, you can use :
+#     level_3_level_4:
+#       level_5: value
+
+# default values (do not modify unless you know what you are doing):
+all:
+  modules: 
+    list: 
+      3: summits
+      13: sites
+      7: routes
+      9: parkings
+      10: huts
+      14: products
+      5: outings
+      8: images
+      11: articles
+      12: books
+      2: users
+      4: areas
+      15: portals
+      6: maps
+      1: documents
+  languages:
+    c2c:
+      fr: francais
+      it: italiano
+      de: deutsch
+      en: english
+      es: espanol
+      ca: catalan
+      eu: euskara
+    book:
+      fr: francais
+      it: italiano
+      de: deutsch
+      en: english
+      es: espanol
+      ca: catalan
+      eu: euskara
+      ot: other
+    punbb:
+      fr: French
+      it: Italian
+      de: German
+      en: English
+      es: Spanish
+      ca: Catalan
+      eu: Euskara
+  # allowed association types for quick associations:
+  associations:
+    letter2model:
+      a: Area
+      b: Book
+      c: Article
+      d: Document
+      e: 
+      f: Product
+      g: # Gear
+      h: Hut
+      i: Image
+      j: 
+      k: Article # article as category
+      l: Line
+      m: Map
+      n: Link
+      o: Outing
+      p: Parking
+      q: Paraspot
+      r: Route
+      s: Summit
+      t: Site
+      u: User
+      v: # Article (ouvreur)
+      w: Portal
+      x: # Route (approche)
+      y: # Route (retour)
+      z: 
+    model2letter:
+      Area: a
+      Book: b
+      Article: c
+      Document: d
+      Product: f
+      # Gear: g
+      Hut: h
+      Image: i
+      Line: l
+      Map: m
+      Link: n
+      Outing: o
+      Parking: p
+      Paraspot: q
+      Route: r
+      Summit: s
+      Site: t
+      User: u
+      Portal: w
+    types:
+      1: sr
+      2: ro
+      3: ss
+      4: hr
+      5: pr
+      6: uo
+      7: st
+      8: to
+      9: tr
+      10: ht
+      11: tt
+      12: pt
+      13: bs
+      14: br
+      15: bh
+      16: bt
+      17: cc
+      18: sc
+      19: bc
+      20: hc
+      21: oc
+      22: rc
+      23: tc
+      24: uc
+      25: ph
+      26: pp
+      27: pc
+      28: rr
+      29: ii
+      30: ai
+      31: mi
+      32: ci
+      33: bi
+      34: hi
+      35: pi
+      36: oi
+      37: ri
+      38: ti
+      39: si
+      40: ui
+      41: pf
+      42: fc
+      43: fi
+      44: wi
+      45: sh
+
+  static_url: "@STATIC_BASE_URL@"
+  
+  # need a sub parameter...
+  # http://trac.symfony-project.com/trac/ticket/1704
+  # you can reorder this list (for apparition order in templates)
+  # but do not touch to the numbers !
+  activities: 
+    list: # please do not change these values:
+      0:
+      1: skitouring
+      2: snow_ice_mixed
+      3: mountain_climbing
+      4: rock_climbing
+      5: ice_climbing
+      6: hiking
+      7: snowshoeing
+      8: paragliding
+    form: # order use in filter form
+      1: skitouring
+      7: snowshoeing
+      6: hiking
+      8: paragliding
+      5: ice_climbing
+      2: snow_ice_mixed
+      3: mountain_climbing
+      4: rock_climbing
+
+    
+  forum:
+    bdd_prefix: punbb_
+    cookie_language_name: language 
+    config_path: %SF_ROOT_DIR%/web/forums/config.php
+    public_ids: [ 2, 4, 5, 6, 7, 8, 9, 10, 11, 20, 21, 23, 24, 25, 22, 41, 42, 50, 51, 55, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72, 79, 80, 81, 83, 99, 101 ]
+    public_ids_by_lang:
+      fr: [ 2, 4, 5, 6, 7, 8, 9, 10, 11, 20, 24, 25, 21, 22, 23, 42, 55, 79, 99, 101 ]
+      it: [ 41, 50, 51, 70, 72 ]
+      en: [ 58, 59, 60 ]
+      de: [ 61, 62, 63 ]
+      es: [ 64, 65, 66 ]
+      ca: [ 67, 68, 69 ]
+      eu: [ 80, 81, 83 ]
+    public_ids_by_activity:
+      1: [ 2, 7, 20, 58, 61, 64, 67, 80 ]
+      2: [ 5, 8, 21, 60, 63, 66, 69, 81 ]
+      3: [ 5, 8, 21, 60, 63, 66, 69, 81 ] # same as 2
+      4: [ 10, 22, 79, 59, 62, 65, 68, 83 ]
+      5: [ 5, 8, 21, 60, 63, 66, 69, 81 ] # same as 2
+      6: [ 6, 23, 60, 63, 66, 69, 81 ]
+      7: [ 2, 7, 20, 58, 61, 64, 67, 80 ]
+      8: [ 60, 63, 66, 69, 81, 99, 101 ]
+      misc: [ 4, 9, 11, 18, 24, 25, 41, 42, 50, 51, 55, 70, 72 ]
+    mountain_news: [ 18, 31, 71, 85, 86, 87, 89, 48, 90, 91, 92, 93, 94, 100 ]
+    mountain_news_by_lang:
+      fr: [ 18, 31, 85, 86, 87, 89, 100 ]
+      it: [ 48, 71 ]
+      en: [ 90 ]
+      de: [ 91 ]
+      es: [ 92 ]
+      ca: [ 93 ]
+      eu: [ 94 ]
+    mountain_news_by_activity:
+      1: [ 85 ]
+      2: [ 86 ]
+      3: [ 86 ] # same as 2
+      4: [ 87 ]
+      5: [ 87 ] # same as 4
+      6: [ 89 ]
+      7: [ 85 ]
+      8: [ 100 ]
+      misc: [ 18, 31, 48, 71, 90, 91, 92, 93, 94 ]
+    c2c_news: [ 31, 71 ]
+    c2c_news_by_lang:
+      fr: [ 31 ]
+      it: [ 71 ]
+    lang_by_id:
+      2:  fr
+      4:  fr
+      5:  fr
+      6:  fr
+      7:  fr
+      8:  fr
+      9:  fr
+      10: fr
+      11: fr
+      12: fr
+      13: fr
+      14: fr
+      15: fr
+      16: fr
+      17: fr
+      18: fr
+      19: fr
+      20: fr
+      21: fr
+      22: fr
+      23: fr
+      24: fr
+      25: fr
+      26: fr
+      27: fr
+      28: fr
+      31: fr
+      39: fr
+      41: it
+      42: fr
+      46: it
+      47: it
+      48: it
+      49: it
+      50: it
+      51: it
+      55: fr
+      58: en
+      59: en
+      60: en
+      61: de
+      62: de
+      63: de
+      64: es
+      65: es
+      66: es
+      67: ca
+      68: ca
+      69: ca
+      70: it
+      71: it
+      72: it
+      75: fr
+      76: fr
+      77: fr
+      78: fr
+      79: fr
+      80: eu
+      81: eu
+      83: eu
+      85: fr
+      86: fr
+      87: fr
+      89: fr
+      90: en
+      91: de
+      92: es
+      93: ca
+      94: eu
+      96: fr
+      99: fr
+      100: fr
+      101: fr
+ 
+  captcha:
+    alphabet: abcdefghjkmnptwxyz234678
+    length:   6
+    
+  # in days
+  pending_users_lifetime: 7
+    
+  outgoing_emails:
+      sender: @SENDER@
+      from: @FROM@
+      reply_to: @REPLY_TO@
+
+  # parameter for the remember cookie
+  remember_key:
+    expiration_age: 2678400 # = 31 days
+    cookie_name:    c2c_remember
+    random:         899cfcae74ca2beb07b3c8420ad9667b
+    
+  ajax_feedback:
+    div_name_success:  ajax_feedback_success
+    div_name_failure:  ajax_feedback_failure
+    div_style_inline:  ajax_inline_feedback
+    div_style_absolute: ajax_feedback
+  
+  autocomplete:
+    min_chars: 3
+    max_results: 15
+    geocode_service: geonames # geonames or nominatim
+    
+  shortdescription_max_length: 30
+  comment_max_lengh: 200
+  # doc comments where anonymous posts are allowed
+  anonymous_comments_allowed:
+    list: [ 'fr', 'en', 'de', 'ca', 'eu', 'es' ]
+  
+  # information inserted in db by historymetadata
+  user_creation:
+    master_id:  2
+    is_minor:   false
+    comment:    User creation
+  
+  list:
+    maxline_number: 30
+    mobile_maxline_number: 20
+    full_max_npp: 50
+    conditions_max_npp: 50
+    default_order:  asc
+    result_types:
+      0: the (list)
+      1: routes linked to
+      2: outings linked to
+      3: conditions linked to
+    linked_docs:
+      1: whole list
+      2: selected documents
+  
+  form:
+    input_group_class:  form-row
+    label_class:        fieldname
+    global_error_class: global_form_error
+    field_error:        field_error
+    
+  personalization:
+    filter_timeout:           32140800 # = 12*31 days
+    cookie_languages_name:    filtered_languages
+    cookie_activities_name:   filtered_activities
+    cookie_places_name:       filtered_places
+    cookie_places_type_name:  filtered_places_type
+    cookie_switch_name:       filter_switch
+    cookie_fold_name:         fold
+    cookie_fold_size:         20 # we reserve some place for future folding personalization
+    cookie_fold_positions:
+      0:  nav_about
+      1:  nav_news
+      2:  nav_prepare
+      3:  nav_toolbox
+      4:  nav_figures
+      5:  last_images
+      6:  last_outings
+      7:  on_the_web
+      8:  last_articles
+      9:  last_mountain_news
+      10: last_msgs
+      11: last_docs
+      12: home_nav
+      13: list_nav
+      14: default_nav
+      15: map_container
+    cookie_forum_categories_name: punbb_dyncat
+ 
+  gpx:
+    # filter based on distance : 
+    # its value is the minimum distance between two successive points after filtering.
+    filter_distance_switch:   true
+    filter_distance_value:    5
+    # hdop is horizontal dilution of precision in GPX files
+    # this filter is useful to remove unprecise points:
+    filter_hdop_switch:       true
+    filter_hdop_value:        4    
+
+  traces:
+    maxfilesize: 512000       # 512 ko maybe more ?
+  
+  upload_dir: uploads
+
+  mime_file: '../misc/magic.mime'
+  
+  images:
+    directory_name:      images
+    temp_directory_name: images_temp
+    tool:                imagemagick # gd or imagemagick
+    svg_rasterizer:      inkscape # batik, convert, inkscape or rsvg
+    upload_method:       plupload # js, plupload, trad
+    validation:
+      weight:          2097152                                 #in o | = 2mo
+      mime_types:      ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/svg+xml']
+      file_extensions: ['jpg', 'jpeg', 'gif', 'png', 'svg']
+      max_size:            { height: 2048, width: 8192 }           #in px
+      min_size:            { height: 16, width: 16 }
+    types:             
+      small:           
+        suffix:        SI
+        dimensions:    { height: 120, width: 120 }            #in px
+        square:        true
+        inflate:       false
+        strip:         true
+        progressive:   false
+      medium:
+        suffix:        MI
+        dimensions:    { height: 250, width: 250 }            #in px
+        square:        false
+        inflate:       false
+        strip:         true
+        progressive:   true
+      big:                                                     
+        suffix:        BI                                      
+        dimensions:    { height: 800, width: 800 }            #in px
+        square:        false
+        inflate:       false
+        strip:         false
+        progressive:   true
+    home_categories: [ 1, 3, 4, 6, 7, 10, 11, 12, 16 ]
+    default_meta:   '/static/images/logo.png'
+    filled_criteria:
+      'act': ''
+      'icat': ''
+      'ityp': ''
+
+  google:
+    # google maps key
+    maps_key: @GMAPS_KEY@
+    # google apis key
+    # see https://code.google.com/apis/console
+    # this one is configured to be used from *.camptocamp.org,
+    # c2cpc23.camptocamp.com and localhost only
+    api_key: 'AIzaSyDXFlFziDDG2ThH47z1V3-KmAS6_vA5GUg'
+    # google custom search engines
+    # see http://www.google.com/cse
+    cse:
+      areas: '013271627684039046788:huvxgkczhj8'
+      articles: '013271627684039046788:7n5u8y3oqtw'
+      books: '013271627684039046788:u-ja11saiaw'
+      huts: '013271627684039046788:ber_bmzkanm'
+      outings: '013271627684039046788:yrvxtxjpvik'
+      parkings: '013271627684039046788:pea9e_qu2lg'
+      routes: '013271627684039046788:jtvuby91jxu'
+      sites: '013271627684039046788:jd9auebpqn8'
+      summits: '013271627684039046788:rwdwo7bxyyy'
+      forums: '013271627684039046788:rqqb4ydcfim'
+
+  geoportail_key: '@GEOPORTAIL_KEY@'
+  async_map: true
+
+  # this section is used to set group names that are stored in bdd
+  # easy management :D
+  group_name:
+    pending:  pending
+    logged:   logged
+    
+  # define default name (to use in symfony)  and value (thats what is in db)
+  credentials:
+     admin:        admin
+     mgmt_contrib: contributor_management
+     mgmt_member:  member_management
+     moderator:    moderator
+
+  mobile_version:
+     host: @MOBILE_VERSION_HOST@
+     ads:  @MOBILE_VERSION_ADS@
+  classic_version:
+     host: @CLASSIC_VERSION_HOST@
+  
+  # For each module, fields that are displayed in tooltips
+  # Note: right now, there is none, but let's keep this block and the 
+  # commented line below in case we need it in the future. We may need
+  # it to display the hut type for example
+  tooltips:
+    summits:
+#      0: {field: elevation, unit: meters}
+
+  licenses:
+    base_url: 'http://creativecommons.org/licenses/'
+    url_suffix: '/2.0/fr/deed.'
+    list:
+      1: by-sa
+      2: by-nc-nd
+      3: copyright
+
+  meta_engine:
+    base_url: '@METAENGINE_URL@'
+    c2c_id: 1
+    c2c_key: @METAENGINE_KEY@
+    activities:
+      1: 10 # ski
+      2: 1 # alpi
+      3: 9 # rocher
+      4: 4 # escalade
+      5: 3 # glace
+      6: 7 # rando
+      7: 8 # raquette
+    regions:
+      14420: 1 # Adamello
+      14421: 2 # Alpes Vaudoises
+      14424: 82 # Alpes Grees - Charbonnel
+      14454: 3 # Alpi Giulie
+      14461: 4 # Alpi Liguri
+      14422: 5 # Alpi Ticinesi - Conches - Goms
+      14462: 6 # Appennino centrale
+      14458: 7 # Appennino meridionale
+      14467: 8 # Appennino settentrionale
+      14469: 9 # couserans aran n
+      14443: 10 # Arlberg - Silvretta
+      14399: 11 # Bauges
+      14400: 12 # Beaufortain
+      14398: 13 # Belledonne
+      14442: 14 # Berner Alpen
+      14417: 15 # Bornes-Aravis
+      14423: 16 # Bündner Oberland - Adula - Ticino E
+      14416: 17 # puigmal canigou alberes
+      14415: 18 # Corbières
+      14451: 19 # Carinthia
+      252522: 20 # Cerces - Thabor - Mt.Cenis TODO report to metaengine
+      14411: 21 # Chablais
+      14401: 22 # Chartreuse
+      14448: 23 # Chiemgauer Alpen - Kitzbühler Alpen
+      14478: 24 # Corse
+      14449: 25 # Dachstein
+      14402: 26 # Dévoluy
+      14456: 27 # Dolomiti centrale
+      14444: 28 # Dolomiti occidentale
+      14455: 29 # Dolomiti orientale
+      14403: 30 # Ecrins
+      14425: 31 # Engadin - Disgrazia
+      14414: 32 # Bearn Balaitous Partacua
+      14418: 33 # Genevois - Jura Sud
+      14426: 34 # Glarner Alpen
+      14427: 35 # Gran Paradiso
+      14404: 36 # HautGiffre-AigRouges
+      14405: 37 # Jura
+      14453: 38 # Karawanken
+      14452: 39 # Karnische Alpen
+      14406: 40 # Lauzière
+      14441: 41 # Lechtaler Alpen - Wetterstein - Karwendel
+      14460: 42 # Lubéron - Baronnies - Saoû
+      14466: 43 # Mercantour - Argentera
+      14410: 44 # Mont-Blanc
+      14470: 45 # Montes Ibericos
+      14450: 46 # Niedere Tauern
+      14428: 47 # Orobie
+      14429: 48 # Ortles
+      14430: 49 # Ötztal
+      14465: 50 # Pelat - Préalpes de Castellane
+      14471: 51 # Picos de Europa - Cantabrica
+      14464: 52 # Préalpes Dignoises
+      14431: 53 # Préalpes Fribourgeoises_Bernoises
+      14463: 54 # Provence
+      14447: 55 # Pustresi - Hohe Tauern
+      14413: 56 # Navarre - Pays basque
+      14432: 57 # Queyras N - Briançonnais - Cozie
+      14433: 58 # Queyras S - Parpaillon - Ubaye - Oronaye
+      14407: 59 # Rousses
+      14477: 60 # Sardegna
+      14474: 61 # Scotland
+      14476: 62 # Sicilia
+      14472: 63 # Sierra de Gredos
+      14473: 64 # Sierra de Guadarrama
+      14468: 65 # Sierra Nevada - Sistema Penibico
+      14446: 66 # Steirische Alpen
+      14434: 67 # Stubaïer Alpen - Sarntaler Alpen
+      14408: 68 # Taillefer
+      14440: 69 # Toggenburg - Appenzell
+      14435: 70 # Urner Alpen
+      14436: 71 # Valais E - Alpes Pennines E
+      14437: 72 # Valais W - Alpes Pennines W
+      14412: 73 # luchon posets maladeta aiguestortes
+      14409: 74 # Vanoise
+      14459: 75 # Vercors
+      14438: 76 # Vorarlberg - Allgauer Alpen
+      14419: 77 # Vosges
+      14475: 78 # Wales
+      14445: 79 # Wienner Alpen
+      14439: 80 # Zentral Graubünden
+      14457: 81 # Zillertaler Alpen
+      261218: 82 # Fontainebleau TODO report to metaengine
+      261245: 83 # Andes centrales TODO report to metaengine
+      261246: 84 # Patagonie N TODO report to metaengine
+      261247: 85 # Patagonie S TODO report to metaengine
+      261248: 86 # Puna TODO report to metaengine
+      261249: 87 # Sierras Pampeanas TODO report to metaengine
+      294790: 88 # Bigorre Ordesa TODO report to metaengine
+      294786: 89 # haute ariege andorre TODO report to metaengine
+      294791: 90 # sierras catalanes TODO report to metaengine
+      294793: 91 # sierras aragonaises TODO report to metaengine
+
+  recent_documents:
+    articles_limit: 6
+    articles_mobile_limit: 4
+    articles_abstract_characters_limit: 400
+    outings_limit: 40
+    outings_mobile_limit: 30
+    images_limit: 10
+    images_mobile_limit: 4
+    threads_limit: 25
+    threads_mobile_limit: 20
+    metaengine_limit: 10
+    mountain_news_limit: 8
+    mountain_news_mobile_limit: 8
+    c2c_news_limit: 4
+    latest_docs_mobile_limit: 10
+  
+  nb_linked_outings:
+    docs: 6
+    areas: 10
+  
+  users:
+    outings_limit: 10 
+    # number of outings displayed on user's page
+    filled_criteria:
+      'act': ''
+      'ucat': ''
+        
+  documents:
+    outings_limit: 10 
+    # number of outings displayed on other document page
+
+  feeds:
+    items_limit: 30
+    # number of items in a feed
+
+  meta_articles:
+    association: @ASSOCIATION_ARTICLE_ID@
+    contact:     @CONTACT_ARTICLE_ID@
+    conditions:  @CONDITIONS_ARTICLE_ID@
+    licenses:    @LICENSES_ARTICLE_ID@
+    credits:     @CREDITS_ARTICLE_ID@
+    help:        @HELP_ARTICLE_ID@
+    help_guide:  @HELP_GUIDE_ARTICLE_ID@
+    help_forum:  @HELP_FORUM_ARTICLE_ID@
+    help_articles: @HELP_ARTICLES_ARTICLE_ID@
+    help_images: @HELP_IMAGES_ARTICLE_ID@
+    charte_forum: @FORUM_CHARTE_ARTICLE_ID@
+    shop:        @SHOP_ARTICLE_ID@
+    home_articles: @HOME_ARTICLES_ARTICLE_ID@
+    home_guide:  @HOME_GUIDE_ARTICLE_ID@
+    know_more:   @KNOW_MORE_ARTICLE_ID@
+    prepare_outings: @PREPARE_OUTINGS_ARTICLE_ID@
+    customize: @HELP_CUSTOMIZE_ARTICLE_ID@
+    faq: @HELP_FAQ_ARTICLE_ID@
+    formatting: @HELP_FORMATTING_ARTICLE_ID@
+    pack_skitouring: @PACK_SKITOURING_ARTICLE_ID@
+    pack_snow_ice_mixed_easy: @PACK_SNOW_ICE_MIXED_EASY_ARTICLE_ID@
+    pack_mountain_climbing_easy: @PACK_MOUNTAIN_CLIMBING_EASY_ARTICLE_ID@
+    pack_rock_climbing_bolted: @PACK_ROCK_CLIMBING_BOLTED_ARTICLE_ID@
+    pack_hiking: @PACK_HIKING_ARTICLE_ID@
+    pack_ice: @PACK_ICE_HARD_ARTICLE_ID@
+    cda_know_more: @CDA_KNOW_MORE@
+    create_account: @WHY_CREATE_ACCOUNT_ARTICLE_ID@
+    website_presentation: @SITE_PRESENTATION_ARTICLE_ID@
+    accidents_database: @ACCIDENTS_DATABASE_ARTICLE_ID@
+
+
+  moderator_user_id: @TOPO_MODERATOR_USER_ID@
+  moderator_it_user_id: @TOPO_MODERATOR_IT_USER_ID@
+  moderator_forum_user_id: @FORUM_MODERATOR_USER_ID@
+
+  # Google Analytics account key
+  ganalytics_key: @GANALYTICS_KEY@
+  mobile_ganalytics_key: @MOBILE_GANALYTICS_KEY@
+    
+
+# module specific conf, put here because it is not accessible from every module   
+
+  equipment_ratings: #this one is common for routes and sites
+    list:
+      0:
+      1: good equipment
+      2: partial equipment
+      3: few equipment
+      4: 'no equipment'
+
+  climbing_styles:
+    list:
+      0:
+      2: slab
+      3: vertical
+      4: overhanging wall
+      6: roof
+      8: small pillar
+      10: crack dihedral
+
+  rock_types:
+    list:
+      0:
+      2: basalte
+      4: calcaire
+      6: conglomerat
+      8: craie
+      10: gneiss
+      12: gres 
+      14: granit
+      16: migmatite
+      18: mollasse calcaire
+      22: quartzite
+      24: rhyolite
+      26: schiste
+      28: trachyte
+      30: artificial
+
+  areas:
+    area_types:
+      0:
+      1: range
+    #  4: valley_area
+      3: admin_limits
+      2: country
+    range:
+      alpes_s:
+        14463: 54 # Provence
+        14464: 52 # Préalpes Dignoises
+        14465: 50 # Pelat - Préalpes de Castellane
+        14460: 42 # Lubéron - Baronnies - Saoû
+        14461: 4 # Alpi Liguri
+        14466: 43 # Mercantour - Argentera
+        14433: 58 # Queyras S - Parpaillon - Ubaye - Oronaye
+        14432: 57 # Queyras N - Briançonnais - Cozie
+      alpes_n:
+        252522: 20 # Cerces - Thabor - Mont-Cenis
+        14403: 30 # Ecrins
+        14402: 26 # Dévoluy
+        14459: 75 # Vercors
+        14408: 68 # Taillefer
+        14407: 59 # Rousses
+        14424: 82 # Alpes Grees - Charbonnel
+        14409: 74 # Vanoise
+        14398: 13 # Belledonne
+        14406: 40 # Lauzière
+        14401: 22 # Chartreuse
+        14399: 11 # Bauges
+        14400: 12 # Beaufortain
+        14410: 44 # Mont-Blanc
+        14427: 35 # Gran Paradiso
+        14417: 15 # Bornes-Aravis
+        14404: 36 # HautGiffre-AigRouges
+        14411: 21 # Chablais
+        14421: 2 # Alpes Vaudoises
+        14437: 72 # Valais W - Alpes Pennines W
+        14436: 71 # Valais E - Alpes Pennines E
+        14442: 14 # Berner Alpen
+        14431: 53 # Préalpes Fribourgeoises_Bernoises
+      alpes_centrales:
+        14435: 70 # Urner Alpen
+        14422: 5 # Alpi Ticinesi - Conches - Goms
+        14426: 34 # Glarner Alpen
+        14423: 16 # Bündner Oberland - Adula - Ticino E
+        14440: 69 # Toggenburg - Appenzell
+        14438: 76 # Vorarlberg - Allgauer Alpen
+        14443: 10 # Arlberg - Silvretta
+        14439: 80 # Zentral Graubünden
+        14425: 31 # Engadin - Disgrazia
+        14428: 47 # Orobie
+        14420: 1 # Adamello
+        14429: 48 # Ortles
+        14430: 49 # Ötztal
+        14441: 41 # Lechtaler Alpen - Wetterstein - Karwendel
+        14434: 67 # Stubaïer Alpen - Sarntaler Alpen
+      alpes_orientales:
+        14456: 27 # Dolomiti centrale
+        14444: 28 # Dolomiti occidentale
+        14455: 29 # Dolomiti orientale
+        14457: 81 # Zillertaler Alpen
+        14448: 23 # Chiemgauer Alpen - Kitzbühler Alpen
+        14447: 55 # Pustresi - Hohe Tauern
+        14452: 39 # Karnische Alpen
+        14454: 3 # Alpi Giulie
+        14453: 38 # Karawanken
+        14451: 19 # Carinthia
+        14450: 46 # Niedere Tauern
+        14449: 25 # Dachstein
+        14445: 79 # Wienner Alpen
+        14446: 66 # Steirische Alpen
+      pyrenees_ibere:
+        14413: 56 # Navarre - Pays basque
+        14414: 32 # Bearn Balaitous Partacua
+        14412: 73 # luchon posets maladeta aiguestortes
+        14469: 9 # couserans aran n
+        14415: 18 # Corbières
+        14416: 17 # puigmal canigou alberes
+        14471: 51 # Picos de Europa - Cantabrica
+        14468: 65 # Sierra Nevada - Sistema Penibico
+        14473: 64 # Sierra de Guadarrama
+        14472: 63 # Sierra de Gredos
+        14470: 45 # Montes Ibericos
+        294790: 88 # Bigorre Ordesa
+        294786: 89 # haute ariege andorre
+        294791: 90 # sierras catalanes
+        294793: 91 # sierras aragonaises
+      europe_w:
+        14418:  33 # Genevois - Jura Sud
+        14405:  37 # Jura
+        14419:  77 # Vosges
+        261218: 83 # Fontainebleau
+        14474:  61 # Scotland
+        14475:  78 # Wales
+      mediterranee:
+        14478: 24 # Corse
+        14477: 60 # Sardegna
+        14476: 62 # Sicilia
+        14462: 6 # Appennino centrale
+        14458: 7 # Appennino meridionale
+        14467: 8 # Appennino settentrionale
+      america_s:
+        261245: 84 # Andes centrales
+        261246: 85 # Patagonie N
+        261247: 86 # Patagonie S
+        261248: 87 # Puna
+        261249: 88 # Sierras Pampeanas
+    country:
+      europe:
+        14271: 101 # Allemagne
+        14265: 101 # Albanie
+        14273: 101 # Andorre
+        14257: 101 # Autriche
+        14272: 101 # Belgique
+        14239: 101 # Biélorussie
+        14246: 101 # Bosnie-Herzégovine
+        14242: 101 # Bulgarie
+        14226: 101 # Croatie
+        14222: 101 # Danemark
+        14267: 101 # Espagne
+        14213: 101 # Estonie
+        14208: 101 # Finlande
+        14274: 101 # France
+        14202: 101 # Géorgie
+        14200: 101 # Grèce
+        14199: 101 # Groenland
+        14189: 101 # Hongrie
+        14181: 101 # Île de Man
+        14210: 101 # Îles Féroé
+        14182: 101 # Irlande
+        14188: 101 # Islande
+        14270: 101 # Italie
+        14177: 101 # Jan Mayen
+        250165: 101 # Kosovo
+        14165: 101 # Lettonie
+        14160: 101 # Liechtenstein
+        14159: 101 # Lituanie
+        14269: 101 # Luxembourg
+        14157: 101 # Macedonia
+        14151: 101 # Malta
+        14146: 101 # Moldova
+        14268: 101 # Monaco
+        250166: 101 # Montenegro
+        14132: 101 # Norvège
+        14139: 101 # Pays-Bas
+        14124: 101 # Pologne
+        14123: 101 # Portugal
+        14223: 101 # République tchèque
+        14119: 101 # Romania
+        14081: 101 # Royaume-Uni
+        14117: 101 # San Marino
+        14110: 101 # Slovaquie
+        14109: 101 # Slovénie
+        14067: 101 # Suisse
+        14099: 101 # Svalbard
+        14097: 101 # Sweden
+        14083: 101 # Ukraine
+        14071: 101 # Serbie
+      america_s:
+        14260: 101 # Argentine
+        14247: 101 # Bolivie
+        14244: 101 # Brésil
+        14232: 101 # Chili
+        14230: 101 # Colombie
+        14218: 101 # Équateur
+        14193: 101 # Guyana
+        14207: 101 # Guyane
+        14211: 101 # Iles Malouines
+        14127: 101 # Paraguay
+        14126: 101 # Pérou
+        14079: 101 # Uruguay
+        14076: 101 # Venezuela
+      america_n:
+        14236: 101 # Canada
+        14080: 101 # Etats-Unis d'Amérique
+        14147: 101 # Mexique
+      america_central:
+        14261: 101 # Antigua et Barbuda
+        14255: 101 # Bahamas, Les
+        14252: 101 # Barbade
+        14251: 101 # Belize
+        14249: 101 # Bermudes
+        14227: 101 # Costa Rica
+        14225: 101 # Cuba
+        14220: 101 # Dominique
+        14198: 101 # Grenade
+        14197: 101 # Guadeloupe
+        14196: 101 # Guatemala
+        14192: 101 # Haiti
+        14191: 101 # Honduras
+        14178: 101 # Jamaïque
+        14150: 101 # Martinique
+        14136: 101 # Nicaragua
+        14129: 101 # Panama
+        14122: 101 # Puerto Rico
+        14219: 101 # République dominicaine
+        14216: 101 # Salvador
+        14104: 101 # St. Christopher-Nevis
+        14103: 101 # St. Lucia
+        14102: 101 # St. Vincent and the Grenadines
+        14089: 101 # Trinidad and Tobago
+      africa:
+        14106: 101 # Afrique du Sud
+        14264: 101 # Algérie
+        14263: 101 # Angola
+        14250: 101 # Bénin
+        14245: 101 # Botswana
+        14241: 101 # Burkina Faso
+        14240: 101 # Burundi
+        14237: 101 # Cameroun
+        14235: 101 # Cap-Vert
+        14229: 101 # Comores
+        14228: 101 # Congo
+        14179: 101 # Côte d'Ivoire
+        14221: 101 # Djibouti
+        14217: 101 # Égypte
+        14214: 101 # Érythrée
+        14212: 101 # Éthiopie
+        14205: 101 # Gabon
+        14204: 101 # Gambie
+        14201: 101 # Ghana
+        14195: 101 # Guinée
+        14215: 101 # Guinée équatoriale
+        14194: 101 # Guinée-Bissau
+        14173: 101 # Kenya
+        14163: 101 # Lesotho
+        14162: 101 # Liberia
+        14161: 101 # Libye
+        14156: 101 # Madagascar
+        14155: 101 # Malawi
+        14152: 101 # Mali
+        14144: 101 # Maroc
+        14149: 101 # Mauritania
+        14148: 101 # Mauritius
+        14143: 101 # Mozambique
+        14141: 101 # Namibia
+        14135: 101 # Niger
+        14134: 101 # Nigeria
+        14234: 101 # République centrafricaine
+        14120: 101 # Réunion
+        14118: 101 # Rwanda
+        14116: 101 # Sao Tome and Principe
+        14114: 101 # Senegal
+        14113: 101 # Seychelles
+        14112: 101 # Sierra Leone
+        14107: 101 # Somalie
+        14101: 101 # Sudan
+        14098: 101 # Swaziland
+        14093: 101 # Tanzanie
+        14233: 101 # Tchad
+        14091: 101 # Togo
+        14088: 101 # Tunisie
+        14084: 101 # Uganda
+        14074: 101 # Western Sahara
+        14070: 101 # Zaire
+        14069: 101 # Zambia
+        14068: 101 # Zimbabwe
+        14172: 101 # Îles Kerguelen
+      asia:
+        14266: 101 # Afghanistan
+        14259: 101 # Arménie
+        14256: 101 # Azerbaïdjan
+        14254: 101 # Bahreïn
+        14203: 101 # Bande de Gaza
+        14253: 101 # Bangladesh
+        14248: 101 # Bouthan
+        14243: 101 # Brunei
+        14238: 101 # Cambodge
+        14231: 101 # Chine
+        14224: 101 # Chypre
+        14170: 101 # Corée du Nord
+        14169: 101 # Corée du Sud
+        14190: 101 # Hong Kong
+        14187: 101 # Inde
+        14186: 101 # Indonésie
+        14184: 101 # Irak
+        14185: 101 # Iran
+        14183: 101 # Iraq-Saudi Arabia Neutral Zone
+        14180: 101 # Israël
+        14176: 101 # Japon
+        14175: 101 # Jordanie
+        14174: 101 # Kazakhstan
+        14167: 101 # Kirghizstan
+        14168: 101 # Koweït
+        14166: 101 # Laos
+        14164: 101 # Liban
+        14158: 101 # Macao
+        14154: 101 # Malaysie
+        14153: 101 # Maldives
+        14145: 101 # Mongolia
+        14142: 101 # Myanmar (Burma)
+        14140: 101 # Népal
+        14131: 101 # Oman
+        14078: 101 # Ouzbékistan
+        14130: 101 # Pakistan
+        14125: 101 # Philippines
+        14121: 101 # Qatar
+        14115: 101 # Saudi Arabia
+        14111: 101 # Singapore
+        14105: 101 # Sri Lanka
+        14100: 101 # Suriname
+        14096: 101 # Syria
+        14094: 101 # Tadjikistan
+        14095: 101 # Taiwan
+        14092: 101 # Thaïlande
+        14086: 101 # Turkmenistan
+        14085: 101 # Turks and Caicos Islands
+        14087: 101 # Turquie
+        14082: 101 # United Arab Emirates
+        14075: 101 # Vietnam
+        14072: 101 # Yemen
+        252647: 101 # Russia
+      oceania:
+        14258: 101 # Australie
+        14209: 101 # Fiji
+        14171: 101 # Kiribati
+        14133: 101 # Northern Mariana Islands
+        14138: 101 # Nouvelle-Calédonie
+        14137: 101 # Nouvelle-Zélande
+        14128: 101 # Papua New Guinea
+        14206: 101 # Polynésie française
+        14108: 101 # Solomon Islands
+        14090: 101 # Tonga
+        14077: 101 # Vanuatu
+        14073: 101 # Western Samoa
+    admin_limits:
+      #departements francais
+      alsace:
+        14300: 67
+        14367: 68
+      aquitaine:
+        14343: 24
+        14333: 33
+        14327: 40
+        14320: 47
+        14303: 64
+      auvergne:
+        14363: '03'
+        14351: 15
+        14324: 43
+        14304: 63
+      basse_normandie:
+        14352: 14
+        14317: 50
+        14306: 61
+      bourgogne:
+        14346: 21
+        14309: 58
+        14297: 71
+        14280: 89
+      bretagne:
+        14345: 22
+        14339: 29
+        14331: 35
+        14311: 56
+      centre:
+        14348: 18
+        14340: 28
+        14330: 36
+        14329: 37
+        14326: 41
+        14322: 45
+      champagne_ardenne:
+        14358: '08'
+        14356: 10
+        14316: 51
+        14315: 52
+      corse:
+        14338: 2A
+        14337: 2B
+      franche_comte:
+        14369: 25
+        14368: 39
+        14298: 70
+        14365: 90
+      haute_normandie:
+        14341: 27
+        14293: 76
+      ile_de_france:
+        14294: 75
+        14292: 77
+        14291: 78
+        14279: 91
+        14278: 92
+        14277: 93
+        14276: 94
+        14275: 95
+      languedoc_roussillon:
+        14355: 11
+        14336: 30
+        14332: 34
+        14319: 48
+        14301: 66
+      limousin:
+        14347: 19
+        14344: 23
+        14282: 87
+      lorraine:
+        14313: 54
+        14312: 55
+        14310: 57
+        14281: 88
+      midi_pyrenees:
+        14357: '09'
+        14354: 12
+        14335: 31
+        14334: 32
+        14321: 46
+        14302: 65
+        14288: 81
+        14287: 82
+      nord_pas_de_calais:
+        14308: 59
+        14305: 62
+      pays_de_la_loire:
+        14323: 44
+        14318: 49
+        14314: 53
+        14296: 72
+        14284: 85
+      picardie:
+        14364: '02'
+        14307: 60
+        14289: 80
+      poitou_charente:
+        14350: 16
+        14349: 17
+        14290: 79
+        14283: 86
+      paca:
+        14362: '04'
+        14361: '05'
+        14360: '06'
+        14353: 13
+        14286: 83
+        14285: 84
+      rhone_alpes:
+        14370: '01'
+        14359: '07'
+        14342: 26
+        14328: 38
+        14325: 42
+        14299: 69
+        14295: 73
+        14366: 74
+      dom:
+        14120: 974
+      cantons_suisses:
+        14371: 'AG'
+        14372: 'GR'
+        14373: SG
+        14374: AI
+        14375: AR
+        14376: SH
+        14377: BL
+        14378: BS
+        14379: SO
+        14380: FR
+        14381: LI
+        14382: JU
+        14383: NE
+        14384: VS
+        14385: TI
+        14386: TG
+        14387: ZG
+        14388: GL
+        14389: NW
+        14390: OW
+        14391: SZ
+        14392: UR
+        14393: LU
+        14394: BE
+        14395: ZH
+        14396: GE
+        14397: VD
+      # provinces espagnoles
+      andalousie:
+        279925: almeria
+        279933: cadix
+        279937: cordoue
+        279940: grenade
+        279943: huelva
+        279945: jaen
+        279952: malaga
+        279961: seville
+      aragon:
+        279944: huesca
+        279964: teruel
+        279959: saragosse
+      asturies:
+        279926: asturies
+      baleares:
+        279929: baleares
+      pays_basque:
+        279922: alava
+        279942: guipuscoa
+        279968: biscaye
+      canaries:
+        282677: laspalmas
+        282678: santacruzdetenerife
+      cantabrie:
+        279934: cantabrie
+      castille_lamanche:
+        279923: albacete
+        279936: ciudad_real
+        279938: cuenca
+        279941: guadalajara
+        279965: tolede
+      castilleetleon:
+        279927: avila
+        279931: burgos
+        279948: leon
+        279956: palencia
+        279958: salamanque
+        279960: segovie
+        279962: soria
+        279967: valladolid
+        279969: zamora
+      catalogne:
+        279930: barcelone
+        279939: gerone
+        279949: lerida
+        279963: tarragone
+      estremadure:
+        279928: badajoz
+        279932: caceres
+      galice:
+        279946: lacorogne
+        279950: lugo
+        279955: orense
+        279957: pontevedra
+      madrid:
+        279951: madrid
+      murcie:
+        279953: murcie
+      navarre:
+        279954: navarre
+      larioja:
+        279947: larioja
+      valence:
+        279924: alicante
+        279935: castellon
+        279966: valence
+      # provinces italiennes
+      abruzzes:
+        280013: AQ # L'Aquila
+        279995: CH
+        280042: PE
+        280064: TE
+      basilicate:
+        280024: MT
+        280047: PZ
+      calabre:
+        279994: CZ
+        279997: CS
+        279999: KR
+        280051: RC
+        280078: VV
+      campanie:
+        279977: AV
+        279981: BN
+        279992: CE
+        280030: NA
+        280057: SA
+      emilie_romagne:
+        279984: BO
+        280003: FE
+        280006: FC
+        280028: MO
+        280038: PR
+        280043: PC
+        280050: RA
+        280052: RE
+        280054: RN
+      frioul_venetiejulienne:
+        280009: GO
+        280046: PN
+        280070: TS
+        280071: UD
+      latium:
+        280007: FR
+        280015: LT
+        280053: RI
+        280055: RM
+        280080: VT
+      ligurie:
+        280014: SP
+        280008: GE
+        280011: IM
+        280059: SV
+      lombardie:
+        279982: BG
+        279986: BS
+        279996: CO
+        279998: CR
+        280017: LC
+        280019: LO
+        280022: MN
+        280027: MI
+        280029: MB
+        280039: PV
+        280062: SO
+        280073: VA
+      marches:
+        279973: AN
+        279975: AP
+        280021: MC
+        280041: PU
+        280002: FM
+      molise:
+        279990: CB
+        280012: IS
+      ombrie:
+        280040: PG
+        280065: TR
+      piemont:
+        280075: VB
+        279972: AL
+        279976: AT
+        279983: BI
+        280000: CN
+        280031: NO
+        280066: TO
+        280076: VC
+      pouilles:
+        279978: BA
+        279979: BT
+        279987: BR
+        280005: FG
+        280016: LE
+        280063: TA
+      sardaigne:
+        279988: CA
+        280032: NU
+        280035: OR
+        280058: SS
+        280034: OT
+        280033: OG
+        279991: CI
+        280025: MD
+      sicile:
+        279971: AG
+        279989: CL
+        279993: CT
+        280001: EN
+        280026: ME
+        280037: PA
+        280049: RG
+        280061: SR
+        280067: TR
+      toscane:
+        279974: AR
+        280004: FI
+        280010: GR
+        280018: LI
+        280020: LU
+        280023: MS
+        280044: PI
+        280045: PT
+        280048: PO
+        280060: SI
+      trentin_hautadige:
+        279985: BZ
+        280068: TN
+      val_daoste:
+        280072: AO
+      venetie:
+        279980: BL
+        280036: PD
+        280056: RO
+        280069: TV
+        280074: VE
+        280077: VR
+        280079: VI
+      austrian_states:
+        282689: NO # niederosterreich
+        282691: B
+        282690: K
+        282688: OO
+        282687: S
+        282686: ST
+        282685: T
+        282683: W
+        282684: V
+      us_states:
+        250183: 'AL' # Alabama
+        250184: AK   # Alaska
+        250185: AZ   # Arizona
+        250186: AR   # etc
+        250187: CA
+        250188: CO
+        250189: CT
+        250190: DE
+        250191: FL
+        250192: GA
+        250193: HI
+        250194: ID
+        250195: IL
+        250196: IN
+        250197: IA
+        250198: KS
+        250199: KY
+        250200: LA
+        250201: ME
+        250202: MD
+        250203: MA
+        250204: MI
+        250205: MN
+        250206: MS
+        250207: MO
+        250208: MT
+        250209: NE
+        250210: NV
+        250211: NH
+        250212: NJ
+        250213: NM
+        250214: NY
+        250215: NC
+        250216: ND
+        250217: OH
+        250218: OK
+        250219: OR
+        250220: PA
+        250221: RI
+        250222: SC
+        250223: SD
+        250224: TN
+        250225: TX
+        250226: UT
+        250227: VT
+        250228: VA
+        250229: WA
+        250230: WV
+        250231: WI
+        250232: WY
+      canada_provinces:
+        252272: 'BC' # British Columbia
+        252273: AB   # Alberta
+        252274: MB   # Manitoba
+        252275: NB   # New Brunswick
+        252276: NL   # Newfoundland and Labrador
+        252277: NT   # Northwest Territories
+        252278: NS   # Nova Scotia
+        252279: NU   # Nunavut
+        252280: ON   # Ontario
+        252281: PE   # Prince Edward Island
+        252282: QC   # Quebec
+        252283: SK   # Saskatchewan
+        252284: YT   # Yukon
+      norway_counties:
+        263228: '01' # Ostfold
+        263247: '02' # Akershus
+        263246: '03' # Oslo
+        263244: '04' # Hedmark
+        263245: '05' # Oppland
+        263242: '06' # Buskerud
+        263241: '07' # Vestfold
+        263240: '08' # Telemark
+        263239: '09' # Aust-Agder
+        263238: 10   # Vest-Agder
+        263237: 11   # Rogaland
+        263236: 12   # Hordaland
+        263235: 14   # Sogn og Fjordane
+        263234: 15   # More og Romsdal
+        263233: 16   # Sor-Trondelag
+        263232: 17   # Nord-Trondelag
+        263231: 18   # Nordland
+        263230: 19   # Troms
+        263229: 20   # Finnmark
+    suffix_france:
+      14370: '01'
+      14364: '02'
+      14363: '03'
+      14362: '04'
+      14361: '05'
+      14360: '06'
+      14359: '07'
+      14358: '08'
+      14357: '09'
+      14356: 10
+      14355: 11
+      14354: 12
+      14353: 13
+      14352: 14
+      14351: 15
+      14350: 16
+      14349: 17
+      14348: 18
+      14347: 19
+      14338: 2A
+      14337: 2B
+      14346: 21
+      14345: 22
+      14344: 23
+      14343: 24
+      14369: 25
+      14342: 26
+      14341: 27
+      14340: 28
+      14339: 29
+      14336: 30
+      14335: 31
+      14334: 32
+      14333: 33
+      14332: 34
+      14331: 35
+      14330: 36
+      14329: 37
+      14328: 38
+      14368: 39
+      14327: 40
+      14326: 41
+      14325: 42
+      14324: 43
+      14323: 44
+      14322: 45
+      14321: 46
+      14320: 47
+      14319: 48
+      14318: 49
+      14317: 50
+      14316: 51
+      14315: 52
+      14314: 53
+      14313: 54
+      14312: 55
+      14311: 56
+      14310: 57
+      14309: 58
+      14308: 59
+      14307: 60
+      14306: 61
+      14305: 62
+      14304: 63
+      14303: 64
+      14302: 65
+      14301: 66
+      14300: 67
+      14367: 68
+      14299: 69
+      14298: 70
+      14297: 71
+      14296: 72
+      14295: 73
+      14366: 74
+      14294: 75
+      14293: 76
+      14292: 77
+      14291: 78
+      14290: 79
+      14289: 80
+      14288: 81
+      14287: 82
+      14286: 83
+      14285: 84
+      14284: 85
+      14283: 86
+      14282: 87
+      14281: 88
+      14280: 89
+      14365: 90
+      14279: 91
+      14278: 92
+      14277: 93
+      14276: 94
+      14275: 95
+      14120: 974
+    avalanche_country_url:
+      france: 'france.meteofrance.com/france/MONTAGNE?MONTAGNE_PORTLET.path=montagnebulletinneige%2FDEPT'
+    avalanche_url:
+      14067: 'www.slf.ch/lawinenbulletin/index_'
+      14257: 'www.lawinen.at/austria/'
+      14270: 'www.aineva.it/bolletti/bollet6.html'
+      14295: france
+      14301: france
+      14302: france
+      14303: france
+      14328: france
+      14335: france
+      14337: france
+      14338: france
+      14357: france
+      14360: france
+      14361: france
+      14362: france
+      14366: france
+    avalanche_archive_old_limit:
+      14067: '20121125'
+    avalanche_archive_url_old:
+      14067: 'www.slf.ch/schneeinfo/Archiv/lwdarchiv/%s/nb/%s/html/%s_nb_%s_bw.html'
+    avalanche_archive_url:
+      14067: 'www.slf.ch/schneeinfo/Archiv/lwdarchiv/%s/nb/%s/html/%s1700_gk_c_%s_complete.html'
+    weather_country_name:
+      france: 'Météo France'
+    weather_country_url:
+      france: 'france.meteofrance.com/france/meteo?PREVISIONS_PORTLET.path=previsionsdept%2FDEPT'
+    weather_name:
+      14067: [ 'MeteoSwiss', 'Meteocentrale' ]
+      14267: 'AEMET'
+      14270: 'Meteo Live'
+      14295: [ 'Météo Chamonix' ]
+      14328: [ 'Caplain' ]
+      14366: [ 'Météo Chamonix', 'OT Chamonix' ]
+      14384: [ 'Météo Valais', 'Météo Chamonix' ]
+      14397: 'Météo Chamonix'
+      14405: 'Météo Chamonix'
+    weather_url:
+      14067: [ 'www.meteosuisse.ch/', 'www.meteocentrale.ch' ]
+      14267: 'www.aemet.es/es/eltiempo/prediccion/montana'
+      14270: 'www.nimbus.it/italiameteo/italiameteo.htm'
+      14295: [ 'www.meteo-chamonix.org/drupal/p-r-e-v-i-s-i-o-n-s/alpes-du-nord' ]
+      14328: [ 'mto38.free.fr/frog.html' ]
+      14366: [ 'www.meteo-chamonix.org/drupal/p-r-e-v-i-s-i-o-n-s/alpes-du-nord', 'chamonix-meteo.com/chamonix-mont-blanc/meteo/prevision/soir/previ_meteo_6_jours.php' ]
+      14384: [ 'www.meteo-valais.ch', 'www.meteo-chamonix.org/drupal/p-r-e-v-i-s-i-o-n-s/alpes-du-nord' ]
+      14397: 'www.meteo-chamonix.org/drupal/p-r-e-v-i-s-i-o-n-s/alpes-du-nord'
+      14405: 'www.meteo-chamonix.org/drupal/p-r-e-v-i-s-i-o-n-s/alpes-du-nord'
+    filled_criteria:
+      'atype': ''
+  
+  summits:
+    summit_types:
+      1: culmen
+      2: pass
+      4: cliff
+      6: valley
+      3: lake
+      7: glacier
+      8: bisse
+      9: source
+      10: canyon
+      11: hole
+      100: hut
+      5: raid
+      99: other
+    filled_criteria:
+
+  sites:
+    site_types_new:
+      0:
+      2: school
+      4: boulder
+      12: climbing_gym
+    site_types:
+      0:
+      2: school
+      4: boulder
+      12: climbing_gym
+      6: multi-pitches
+      8: trad
+      9: mountain
+    filled_criteria:
+      'talt': elevation
+      'rqua': routes_quantity
+      'ttyp': site_types
+      'tmhei': mean_height
+      'tmrat': mean_rating
+      'tprat': equipment_rating
+      'trock': rock_types
+ 
+  routes:
+    global_ratings:
+      0: 
+      2: F
+      3: F+
+      4: PD-
+      6: PD
+      8: PD+
+      10: AD-
+      12: AD
+      14: AD+
+      16: D-
+      18: D
+      20: D+
+      22: TD-
+      24: TD
+      26: TD+
+      28: ED-
+      30: ED
+      32: ED+
+      34: ED4
+      36: ED5
+      38: ED6
+      40: ED7
+    facings:
+      0: 
+      1: 'N'
+      8: NE
+      7: E
+      6: SE
+      5: S
+      4: SW
+      3: W
+      2: NW
+    engagement_ratings:
+      0:  
+      1: I
+      2: II
+      3: III 
+      4: IV
+      5: V
+      6: VI
+    toponeige_technical_ratings:
+      0:  
+      1: 1.1 
+      2: 1.2 
+      3: 1.3 
+      4: 2.1 
+      5: 2.2 
+      6: 2.3 
+      7: 3.1 
+      8: 3.2 
+      9: 3.3
+      10: 4.1
+      11: 4.2
+      12: 4.3
+      13: 5.1
+      14: 5.2
+      15: 5.3
+      16: 5.4
+      17: 5.5
+      18: 5.6
+    toponeige_exposition_ratings:
+      0:
+      1: E1
+      2: E2
+      3: E3
+      4: E4
+    labande_ski_ratings:
+      0:
+      1: S1
+      2: S2
+      3: S3
+      4: S4
+      5: S5
+      6: S6
+      7: S7
+    ice_ratings:
+      0:
+      2: '1'
+      4: 2
+      6: 3
+      8: 3+
+      10: 4
+      12: 4+
+      14: 5
+      16: 5+
+      18: 6
+      20: 6+
+      22: 7
+      24: 7+
+    mixed_ratings:
+      0:
+      2: M1
+      4: M2
+      6: M3
+      8: M3+
+      10: M4
+      12: M4+
+      14: M5
+      16: M5+
+      18: M6
+      20: M6+
+      22: M7
+      24: M7+
+      26: M8
+      28: M8+
+      30: M9
+      32: M9+
+      34: M10
+      36: M10+
+      38: M11
+      40: M11+
+      42: M12
+      44: M12+
+    rock_free_ratings:
+      0:
+      2: 2
+      3: 3a
+      4: 3b
+      6: 3c
+      8: 4a
+      10: 4b
+      12: 4c
+      14: 5a
+      15: 5a+
+      16: 5b
+      17: 5b+
+      18: 5c
+      19: 5c+
+      20: 6a
+      22: 6a+
+      24: 6b
+      26: 6b+
+      28: 6c
+      30: 6c+
+      32: 7a
+      34: 7a+
+      36: 7b
+      38: 7b+
+      40: 7c
+      42: 7c+
+      44: 8a
+      46: 8a+
+      48: 8b
+      50: 8b+
+      52: 8c
+      54: 8c+
+      56: 9a
+      58: 9a+
+      60: 9b
+      62: 9b+
+    aid_ratings:
+      0:
+      2: A0
+      3: A0+
+      4: A1
+      6: A1+
+      8: A2
+      10: A2+
+      12: A3
+      14: A3+
+      16: A4
+      18: A4+
+      20: A5
+      22: A5+
+    hiking_ratings:
+      0:
+      1: T1
+      2: T2
+      3: T3
+      4: T4
+      5: T5
+    snowshoeing_ratings:
+      0:
+      1: R1
+      2: R2
+      3: R3
+      4: R4
+      5: R5
+    filled_criteria:
+      'maxa': malt
+      'fac': ''
+      'hdif': ''
+      'ddif': ''
+      'time': ''
+      'ralt': ''
+      'dhei': ''
+      'grat': ''
+      'erat': ''
+      'prat': ''
+      'frat': ''
+      'arat': ''
+      'irat': ''
+      'mrat': ''
+      'trat': ''
+      'expo': ''
+      'lrat': ''
+      'srat': ''
+      'hrat': ''
+      'wrat': ''
+      'rlen': ''
+
+  parkings:
+    public_transportation_ratings:
+      0:
+      1: good service
+      5: seasonal service
+      2: poor service
+      4: near service
+      3: no service
+    public_transportation_types:
+      0:
+      1: train
+      2: bus
+      3: service_on_demand
+    filled_criteria:
+      'tp': ''
+      'tpty': ''
+      'scle': ''
+  
+  maps:
+    editors:
+      1: IGN
+      2: Swisstopo
+      3: L'Escursionista
+    scales:
+      1: 1/25000
+      2: 1/50000
+      3: 1/100000
+    filled_criteria:
+      'code': ''
+      'scal': ''
+      'edit': ''
+  
+  articles:
+    filled_criteria:
+      'act': ''
+      'ccat': ''
+      'ctyp': ''
+  
+  books:
+    filled_criteria:
+      'act': ''
+      'auth': ''
+      'edit': ''
+      'btyp': ''
+      'blang': ''
+  
+  huts:
+    filled_criteria:
+      'halt': ''
+      'htyp': ''
+      'hscap': ''
+      'hucap': ''
+      'act': ''
+  
+  outings:
+    filled_criteria:
+      'alt':  oalt
+      'hdif': odif
+      'ddif': oddif
+      'cond': ocond
+      'fac': ''
+      'time': ''
+      'ralt': ''
+      'dhei': ''
+      'grat': ''
+      'erat': ''
+      'prat': ''
+      'frat': ''
+      'arat': ''
+      'irat': ''
+      'mrat': ''
+      'trat': ''
+      'expo': ''
+      'lrat': ''
+      'srat': ''
+      'hrat': ''
+      'wrat': ''
+  
+  products:
+    filled_criteria:
+      'falt': ''
+  
+  ages:
+    values:
+      '1D': '1'
+      '2D': 2
+      '3D': 3
+      '4D': 4
+      '5D': 5
+      '6D': 6
+      '1W': '1'
+      '10D': 10
+      '2W': 2
+      '3W': 3
+      '1M': '1'
+      '2M': 2
+      '3M': 3
+      '4M': 4
+      '6M': 6
+      '1Y': '1'
+      '2Y': 2
+      '3Y': 3
+      '5Y': 5
+      '10Y': 10
+    units:
+      '1D': day
+      '2D': days
+      '3D': days
+      '4D': days
+      '5D': days
+      '6D': days
+      '1W': week
+      '10D': days
+      '2W': weeks
+      '3W': weeks
+      '1M': month
+      '2M': months
+      '3M': months
+      '4M': months
+      '6M': months
+      '1Y': year
+      '2Y': years
+      '3Y': years
+      '5Y': years
+      '10Y': years
+  
+  figures:
+    list:
+      summits:  14'200
+      routes:   24'900
+      outings:  102'000
+      images:   185'000
+      sites:    2'400
+      huts:     1'600
+      parkings: 3'700
+      books:    1'080
+      users:    33'700
+      articles: 650
+      topics:   228'000
+      posts:    1'756'000
+
+  profile_cookies:
+    list: [ 'punbb_dyncat', 'filter_switch', 'filtered_places_type', 'filtered_places', 'filtered_activities', 'filtered_languages' ]
+
+  minify:
+    debug: @MINIFY_DEBUG@
+
+  production: @PRODUCTION@
+
+  portals:
+    filled_criteria:
+    id:
+      1: ta
+      2: alpibig
+      3: ice
+      4: steep
+      5: metaskirando
+      6: cda
+      7: raid
+      8: pyrenees
+      9: montblanc
+      10: vosges
+      11: firstascent
+    cda:
+      id: @CDA_ID@
+      name: 'changerdapproche'
+      menu: 1
+      home: 1
+    metaskirando:
+      id: @METASKI_ID@
+      name: 'metaskirando'
+      url: 'metaskirando.camptocamp.org'
+      menu: 1
+      home: 1
+    ice:
+      id: @ICE_ID@
+      name: 'ice climbing portal'
+      menu: 1
+      home: 1
+    steep:
+      id: @STEEP_ID@
+      name: 'steep skiing portal'
+      menu: 1
+      home: 1
+    ta:
+      id: @TA_ID@
+      name: 'ta portal'
+      menu: 1
+      home: 1
+    alpibig:
+      id: @ALPIBIG_ID@
+      name: 'alpinism big portal'
+      menu: 1
+      home: 1
+    raid:
+      id: @RAID_ID@
+      name: 'raid portal'
+      menu: 1
+      home: 1
+    pyrenees:
+      id: @PYRENEES_ID@
+      name: 'pyrenees portal'
+      areas_only: [ 14413, 14414, 14412, 14469, 14415, 14416, 294790, 294786, 294791, 294793 ]
+      menu: 1
+      home: 1
+    montblanc:
+      id: @MONTBLANC_ID@
+      name: 'montblanc portal'
+      areas_only: [ 14410, 14404 ]
+      menu: 1
+      home: 1
+    vosges:
+      id: @VOSGES_ID@
+      name: 'vosges portal'
+      areas_only: [ 14419 ]
+      menu: 1
+      home: 1
+    firstascent:
+      id: @FIRSTASCENT_ID@
+      name: 'New routes article'
+    accident:
+      id: @ACCIDENT_ID@
+      name: 'Incidents and accidents database'
+
+  mw_contest_id: @MW_CONTEST_ID@
+
+  mw_contest_enabled: @MW_CONTEST_ENABLED@
+
+  cda:
+    activities:
+      1: skitouring
+      7: snowshoeing
+      6: hiking
+      400: 'rock_climbing (single-pitch)'
+      4: 'rock_climbing (multi-pitch)'
+      '2-3-5': mountaineering
+      8: paragliding
+    activities_id:
+      1: ski
+      7: snowshoeing
+      6: hiking
+      400: crag
+      4: climbing
+      '2-3-5': alpi
+    difficulty:
+      0:
+      1: easy
+      2: medium
+      3: difficult
+    difficulty_range_ski:
+      param: trat
+      1: '<6'
+      2: '7~9'
+      3: '>10'
+    difficulty_range_alpi:
+      param: grat
+      1: '<4'
+      2: '6~10'
+      3: '>12'
+    difficulty_range_climbing:
+      param: grat
+      1: '<8'
+      2: '10~20'
+      3: '>22'
+    difficulty_range_crag:
+      param: mrat
+      1: '<12'
+      2: '14~19'
+      3: '>20'
+    difficulty_range_hiking:
+      param: hrat
+      1: '<2'
+      2: '3~4'
+      3: '>5'
+    difficulty_range_snowshoeing:
+      param: wrat
+      1: 1
+      2: 2
+      3: '>3'
+    elevation:
+      0:
+      1: short
+      2: medium
+      3: long
+    elevation_range:
+      routes_param: hdif
+      outings_param: odif
+      1: '<800'
+      2: '800~1300'
+      3: '>1300'
+    winter:
+      start: 12
+      activity: 1
+    summer:
+      start: 5
+      activity: 6
+
+  tags:
+    paragliding:
+      param: 'stags'
+      id: @PARAGLIDING_TAG_ID@
+    video:
+      param: 'otags'
+      id: @VIDEO_TAG_ID@
+
+  statsd:
+    server_name: @STATSD_HOST@
+    server_port: @STATSD_PORT@
+
+  statistics:
+    base_url: @STATISTICS_URL@

@@ -1,0 +1,13 @@
+all:
+  sort:
+    criteria:
+      'id': ID
+      'snam': 'name'
+      'salt': 'elevation'
+      'styp': 'summit_type'
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+    filled_criteria:

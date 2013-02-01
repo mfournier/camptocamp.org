@@ -1,0 +1,32 @@
+# Magic data adapted for c2c
+# Only detects file of interest
+
+# GIF images
+0       string          GIF8                                  image/gif
+
+# JPEG images
+0       beshort         0xffd8                                image/jpeg
+
+# PNG images
+0       string          \x89PNG                               image/png
+
+# SVG, KML and GPX files
+0       string          \<?xml\ version="
+>15     string          >\0
+>>23    search/400      \<svg                                 image/svg+xml
+>>23    search/400      \<kml                                 application/vnd.google-earth.kml+xml
+>>18    search/400      \<gpx                                 application/gpx+xml
+
+# other possible SVG
+38      string          \<\!DOCTYPE\040svg                    image/svg+xml
+
+# other possible GPX, without XML header
+0	string		\<gpx\                                application/gpx+xml
+
+# KMZ (zipped kml)
+0       string          PK\003\004
+>4      byte            0x14
+>>30    string          doc.kml                               application/vnd.google-earth.kmz
+
+# Other XML files
+0       string          \<?xml                                text/xml

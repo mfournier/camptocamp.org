@@ -1,0 +1,23 @@
+all:
+  types:
+    list:
+      0:
+      1: local_product
+      2: restaurant
+      3: products_shop
+      4: pub
+      5: gear_shop
+
+  sort:
+    criteria:
+      'id': ID
+      'fnam': name
+      'falt': elevation
+      'ftyp': product_type
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+    filled_criteria:
+      'falt': ''

@@ -1,0 +1,27 @@
+<?php
+// SETUP YOUR CLICK COUNTER
+// Detailed information found in the readme file
+
+//  @BLURB@
+
+// What type of server is your website on?
+// 1 = UNIX (Linux), 2 = Windows, 3 = Machintos
+$settings['system']=1;
+
+// Password for admin area
+$settings['apass']='@ADVERTISING_ADMIN@';
+
+// URL of the click.php file
+$settings['click_url']='http://@CLASSIC_VERSION_HOST@/stats/click.php';
+
+// OPTIONAL SETTINGS BELOW //
+
+// Name of the log file
+$settings['logfile']='@ADVERTISING_RW_DIR@/clicks.txt';
+
+// Name of the file where last ID number is stored
+$settings['idfile']='@ADVERTISING_RW_DIR@/ids.txt';
+
+// DO NOT EDIT BELOW
+$settings['verzija']='1.1';
+?>

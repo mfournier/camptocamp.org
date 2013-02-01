@@ -1,0 +1,23 @@
+all:
+  editors:
+    list:
+      1: IGN
+      2: Swisstopo
+      3: "L'Escursionista"
+  scales:
+    list:
+      1: 1/25000
+      2: 1/50000
+      3: 1/100000
+
+  sort:
+    criteria:
+      'id': ID
+      'mnam': name
+      'code': code
+      'scal': scale
+      'edit': editor
+    filled_criteria:
+      'code': ''
+      'scal': ''
+      'edit': ''

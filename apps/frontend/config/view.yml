@@ -1,0 +1,12 @@
+default:
+  metas:
+    title:        meta_title
+    robots:       noindex, follow
+    description:  meta_description
+    keywords:     meta_keywords
+
+  # stylesheets:
+  # javascripts should not be specified here if not application-wide
+
+  has_layout:     on
+  layout:         layout

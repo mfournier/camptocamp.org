@@ -1,0 +1,30 @@
+all:
+  shelter_types:
+    list:
+      0:
+      1: building
+      5: gite
+      2: shelter
+      3: camping area
+      4: basecamp
+
+  sort:
+    criteria:
+      'id': ID
+      'hnam': name
+      'halt': elevation
+      'htyp': shelter_type
+      'hscap': staffed_capacity
+      'hucap': unstaffed_capacity
+      'act':  activities
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+    filled_criteria:
+      'halt': ''
+      'styp': ''
+      'hscap': ''
+      'hucap': ''
+      'act': ''

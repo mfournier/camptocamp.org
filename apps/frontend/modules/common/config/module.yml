@@ -1,0 +1,232 @@
+all:
+  counter_base_url: '/stats/click.php?id='
+  active_banners:
+    values: [ google, changerdapproche, camp_c, google, montania, google, google, cilao, camp_c, boutique_c2c, google, changerdapproche ]
+  banners:
+    list:
+      skalp:
+        id: 1
+        image: skalp.gif
+        alt: "Sk'alp"
+      cilao:
+        id: 54
+        image: cilao2012.gif
+        alt: Cilao
+      atelier_escalade:
+        id: 3
+        image: atelier-escalade.gif
+        alt: Atelier-Escalade.fr
+      vieux_campeur:
+        type: flash
+        width: 468 
+        height: 60
+        file: vieux_campeur.swf
+      clubaventure:
+        type: flash
+        width:468
+        height: 60
+        file: voyageur_468.swf
+      google:
+        type: adsense
+      hotrock:
+        id: 5
+        image: arcofasiafr.gif
+        alt: Hot Rock
+      arva:
+        type: flash
+        width: 468
+        height: 60
+        file: arva_camp.swf
+      diamir:
+        type: flash
+        width: 468
+        height: 60
+        file: diamir_camp.swf
+      colltex:
+        type: flash
+        width: 468
+        height: 60
+        file: colltex_fr_light_swissMade.swf
+      quechua:
+        id: 7
+        type: flash
+        width: 468
+        height: 60
+        file: quechua.swf
+      boutique_c2c:
+        id: 41
+        image: boutique_c2c.png
+        alt: boutique c2corg
+      netaffiliation:
+        type: netaffiliation
+      sommets_dependances:
+        id: 18
+        image: sommets_et_dependances.jpg
+        alt: Livre c2c Sommets et dependances
+      diamir_on_tour:
+        id: 11
+        image: banner_diamir_on_tour_FR.gif
+        alt: Diamir on tour
+      grimpisme:
+        id: 12
+        type: flash
+        width: 468
+        height: 60
+        file: grimpisme.swf
+      pressevasion:
+        id: 13
+        image: banniere_ac.gif
+        alt: Attention contagieux
+      changerdapproche:
+        id: 38
+        image: cda.png
+        alt: "Changer d'approche"
+      blueice:
+        id: 21
+        image: blueice-choucas.gif
+        alt: "blue ice"
+      vertical:
+        id:16
+        image: vertical_468_60.gif
+        alt: "Vertical"
+      diamir_on_tour2010:
+        id: 17
+        image: diamir_on_tour2010.gif
+        alt: "Diamir on tour"
+      portail_glace:
+        id: 22
+        image: portail_glace.png
+        alt: "Portail cascade de glace Camptocamp"
+      baechli:
+        id: 39
+        id_fr: 40
+        image: baechli.jpg
+        alt: "Bächli Bergsport"
+      camp_xenon:
+        id: 25
+        image: camp-xenon.png
+        alt: "Camp Xenon"
+      camp_photon:
+        id: 27
+        image: camp-photon.png
+        alt: "Camp Photon"
+      assises_alpi:
+        id: 26
+        image: assises-alpi.jpeg
+        alt: "Assises de l'Alpinisme"
+      camp_campack:
+        id: 28
+        image: camp-campack.png
+        alt: "Camp Campack"
+      camp_minima:
+        id: 29
+        image: camp-minima.png
+        alt: "Camp Minima"
+      camp_matrix:
+        id: 30
+        image: camp-matrix.png
+        alt: "Camp Matrix"
+      natxplore:
+        id: 37
+        image: natxplore.gif
+        alt: "natXplore.com"
+      camp:
+        id: 36
+        image: camp.gif
+        alt: Camp
+      simond:
+        id: 35
+        image: toucan.jpg
+        alt: Simond Toucan2
+      dynafit_baltoro:
+        id: 43
+        type: flash
+        width: 468
+        height: 60
+        file: dynafit_baltoro.swf
+      dynafit_pdg:
+        id: 42
+        type: flash
+        width: 468
+        height: 60
+        file: dynafit_pdg.swf
+      anena:
+        id: 44
+        image: anena.png
+        alt: Anena
+      camp_crampons:
+        id: 45
+        image: camp-crampons.gif
+        alt: Camp Race 290
+      camp_pelle_sac_sonde:
+        id: 46
+        image: camp-pelle-sac-sonde.gif
+        alt: "Camp pelle/sac/sonde"
+      camp_gants:
+        id: 47
+        image: camp-gants.gif
+        alt: "Camp gants"
+      camp_d:
+        id: 48
+        image: camp-d.gif
+        alt: ""
+      camp_e:
+        id: 49
+        image: camp-e.gif
+        alt: ""
+      camp_f:
+        id: 50
+        image: camp-f.gif
+        alt: ""
+      camp_g:
+        id: 51
+        image: camp-g.gif
+        alt: ""
+      camp_h:
+        id: 52
+        image: camp-h.gif
+        alt: ""
+      camp_gravitezero:
+        id: 53
+        image: camp-gravitezero.gif
+        alt: "Gravité Zéro"
+      diamir_WIN:
+        id: 55
+        image: diamir-WIN.gif
+        alt: "Diamir WIN"
+      diamir_Scout11:
+        id: 56
+        image: diamir-Scout11.gif
+        alt: "Diamir Scout 11"
+      diamir_securite:
+        id: 57
+        image: diamir-securite.gif
+        alt: "Diamir Sécurité"
+      diamir_ontour2013:
+        id: 58
+        image: diamir-OnTour2013.gif
+        alt: "Diamir On Tour"
+      expe:
+        id: 59
+        image: expe.gif
+        alt: "Expé"
+      montania:
+        id: 60
+        image: montania_northface.gif
+        alt: "Montania Sport"
+      ibex:
+        id: 61
+        image: ibex.gif
+        alt: "Livres de montagne Ibex Books"
+      camp_b:
+        id: 62
+        image: camp-b2.gif
+        alt: ""
+      camp_c:
+        id: 63
+        image: camp-c2.gif
+        alt: ""
+      camp_a:
+        id: 64
+        image: camp-a.gif
+        alt: ""

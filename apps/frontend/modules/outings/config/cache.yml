@@ -1,0 +1,25 @@
+# we do not cache partials (not worth) :
+
+_conditions_level:
+  enabled:  off
+
+_latest:
+  enabled:  off
+
+_filter_form:
+  enabled: off 
+
+_routes_filter:
+  enabled: off
+
+_linked_outings:
+  enabled: off
+
+_feature:
+  enabled: off 
+
+filter:
+  enabled: off
+
+conditions:
+  enabled: off

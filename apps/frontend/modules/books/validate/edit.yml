@@ -1,0 +1,55 @@
+fields:
+  name:
+    required:
+      msg:          field cannot be left blank
+    sfStringValidator:
+      min:          4
+      min_error:    this name is too short (4 characters minimum)
+      max:          150
+      max_error:    this name is too long (150 characters maximum)
+  isbn:
+    sfStringValidator:
+      min:          7
+      min_error:    this isbn is too short (7 charaters minimum)
+      max:          17
+      max_error:    this isbn is too long (17 charaters maximum)
+  url:
+    sfUrlValidator:
+      url_error:    invalid URL
+  nb_pages:
+    sfNumberValidator:
+      nan_error:    value must an integer
+      min:          0
+      min_error:    value must be at least 0
+      max:          30000
+      max_error:    value must be less than or equal to 30000
+      type:         int
+      type_error:   value must an integer
+  activities:
+    myChoiceValidator:
+      config_choice: app_activities_list
+      unique: false
+      array_exclusive: [ 0 ]
+      exclusive_choice_error: empty choice can't be selected with another choice
+  book_types:
+    myChoiceValidator:
+      config_choice: mod_books_book_types_list
+      unique: false
+      array_exclusive: [ 0 ]
+      exclusive_choice_error: empty choice can't be selected with another choice
+  langs:
+    myChoiceValidator:
+      config_choice: app_languages_book
+      unique: false
+  author:
+    sfStringValidator:
+      max: 100
+      max_error:    this data is too long (100 characters maximum)
+  editor:
+    sfStringValidator:
+      max: 100
+      max_error:    this data is too long (100 characters maximum)
+  publication_date:
+    sfStringValidator:
+      max: 100
+      max_error:    this data is too long (100 characters maximum)

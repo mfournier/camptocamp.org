@@ -1,0 +1,139 @@
+# @BLURB@
+
+<Directory @SF_PROJECTS_DIR@/@PROJECT_NAME@/web>
+   Order allow,deny
+   Allow from all
+</Directory>
+
+# define some MIME types
+AddType application/vnd.google-earth.kmz     .kmz
+AddType application/vnd.google-earth.kml+xml .kml
+AddType application/gpx+xml                  .gpx
+AddType application/json                     .json
+AddType text/cache-manifest                  .appcache .manifest
+
+# Use UTF-8 encoding for anything served text/plain or text/html
+AddDefaultCharset utf-8
+# Force UTF-8 for a number of file formats
+AddCharset utf-8 .css .js .xml .json .rss .atom
+
+Alias /sf/ @SF_PROJECTS_DIR@/@PROJECT_NAME@/lib/vendor/symfony/data/web/sf/
+
+# gzip compression
+<IfModule mod_deflate.c>
+  <Directory @SF_PROJECTS_DIR@/@PROJECT_NAME@/web>
+    <IfModule filter_module>
+      FilterDeclare   COMPRESS
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/html
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/plain
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/xml
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/css
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/x-javascript
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xml
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/svg+xml
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $image/x-icon
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/vnd.google-earth.kml+xml
+      FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/json
+      FilterChain     COMPRESS
+      FilterProtocol  COMPRESS  DEFLATE change=yes;byteranges=no
+    </IfModule>
+    # Legacy versions of Apache
+    <IfModule !mod_filter.c>
+      AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/x-javascript application/xml
+      AddOutputFilterByType DEFLATE image/svg+xml image/x-icon application/vnd.google-earth.kml+xml application/json
+    </IfModule>
+  </Directory>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_URI} ^/cgi-bin/
+  RewriteRule /cgi-bin/c2corg4osm     @MAPSERV@ [handler=cgi-script,env=MS_MAPFILE:@SF_PROJECTS_DIR@/@PROJECT_NAME@/mapdata/osm-wms.map,last]
+  RewriteRule /cgi-bin/c2corg_wms     @MAPSERV@ [handler=cgi-script,env=MS_MAPFILE:@SF_PROJECTS_DIR@/@PROJECT_NAME@/mapdata/c2corg-wms2.map,last]
+  RewriteRule /cgi-bin/mapserv_c2corg @MAPSERV@ [handler=cgi-script,env=MS_MAPFILE:@SF_PROJECTS_DIR@/@PROJECT_NAME@/mapdata/c2corg-wms.map,last]
+
+  <Directory @SF_PROJECTS_DIR@/@PROJECT_NAME@/web>
+    RewriteEngine On
+
+    # Uncomment next line to neutralize site 
+    #RewriteCond %{REMOTE_ADDR} !10\.27.*
+    #RewriteRule ^(.*).(html|php)$ maintenance.html [L]
+
+    # static urls should only serve css, js, images, svg, xml
+    # last condition is because of next rule :)
+    # nb: also works if STATIC_HOST is empty
+    RewriteCond %{HTTP_HOST} =@STATIC_HOST@
+    RewriteCond %{REQUEST_URI} !(.*\.(js|css|png|jpg|jpeg|gif|ico|xml|svg|swf|xap))$
+    RewriteCond %{REQUEST_URI} !sfMinifyPlugin.php$
+    RewriteRule .* - [F,L]
+
+    # Combine and minify JavaScript and CSS
+    # possible url styles:
+    # 12345/path_to_js_or_css (minimized, long ttl)
+    # 12345/no/path_to_js_or_css (not minimized, long ttl)
+    # /path_to_js_or_css (minimized, short ttl)
+    # /no/path_to_js_or_css (not minimized, short ttl)
+    RewriteCond %{REQUEST_URI} \.(css|js)$
+    RewriteRule ^(([a-f0-9]{8})/?(no)?/)?(.*\.(js|css))$ /sfMyMinifyPlugin/sfMinifyPlugin.php?f=/$4&$3&$2 [L]
+
+    # Versioning of the images used in css
+    # /static/images/12345/path_to_image
+    RewriteCond %{REQUEST_URI} \.(png|jpg|gif)$
+    RewriteRule ^[a-f0-9]{8}/static/images/(.*\.(png|jpg|gif))$ /static/images/$1 [L,NC]
+
+    # robots.txt
+    # prod version (mobile and www)
+    RewriteCond %{HTTP_HOST} (www|m).camptocamp.org
+    RewriteRule ^robots.txt$ /robots/prod.txt [L]
+    # dev version, default version (includes s.camptocamp.org in production)
+    RewriteRule ^robots.txt$ /robots/dev.txt [L]
+
+    # we skip all files with .something, except for .html, .rss, .gpx etc
+    RewriteCond %{REQUEST_URI} \.\w$
+    RewriteCond %{REQUEST_URI} !\.html$
+    RewriteCond %{REQUEST_URI} !(.*\.(rss|gpx|kml|json))$
+    RewriteRule .* - [L]
+
+    # RSS feed
+    RewriteCond %{REQUEST_URI} \.rss$
+    RewriteRule ^(.rss)$ index.php [QSA,L]
+
+    # forums are not handled by symfony
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/forums/
+
+    # if none of the above, we redirect to our front web controller
+    RewriteRule ^(.*)$ index.php [QSA,L]
+
+  </Directory>
+</IfModule>
+
+<IfModule mod_headers.c>
+    # remove etags to enable better client-side caching
+    Header unset ETag
+    FileETag None
+
+    # force the latest IE version, in various cases when it may fall back to IE7 mode
+    Header set X-UA-Compatible "IE=Edge,chrome=1"
+    # mod_headers can't match by content-type, but we don't want to send this header on *everything*...
+    # One solution could be to look at file extension, like below (solution from html5 boilerplate
+    # with few adjustements: https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess)
+    <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|svg|svgz|ico|appcache|manifest|htc)$" >
+      Header unset X-UA-Compatible
+    </FilesMatch>
+</IfModule>
+
+# makes images, css and js expire one week later in client cache
+<IfModule mod_expires.c>
+    <FilesMatch "\.(ico|html|xml|txt|jpg|jpeg|png|gif|svg|js|css)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 month"
+    </FilesMatch>
+</IfModule>
+
+# big crash from our front web controller
+ErrorDocument 500 "<h2>Application error</h2>Symfony application failed to start properly"
+
+# redirect 404 pages directly handled by apache to symfony 404 page
+ErrorDocument 404 /common/error404

@@ -1,0 +1,429 @@
+MAP
+
+# current c2c wms
+
+STATUS ON
+SYMBOLSET symbols.txt
+EXTENT -20037508 -136554022 20037508 136554022
+UNITS dd
+SHAPEPATH "data"
+IMAGECOLOR 255 255 255
+FONTSET fonts.txt
+CONFIG "PROJ_LIB" "@SF_PROJECTS_DIR@/@PROJECT_NAME@/mapdata"
+MAXSIZE 2500
+
+WEB
+  METADATA
+    "wms_title"     "C2C WMS Server"  ##required
+    "wms_onlineresource" "http://@SERVER_NAME@@SERVER_PORT@/cgi-bin/c2corg_wms"   ##required
+    "wms_srs"       "EPSG:4326 EPSG:900913 EPSG:21781"  ##recommended
+  END
+END
+
+PROJECTION
+  "init=epsg:4326"   ##required
+END
+
+#
+# Start of layer definitions
+#
+
+LAYER
+  NAME summits
+  METADATA
+    "wms_title"    "summits"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom FROM summits USING UNIQUE id USING SRID=900913"
+  FILTER ("redirects_to" IS NULL AND "summit_type" != 5)
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  CLASSITEM "summit_type"
+  
+  CLASS
+    NAME "pass"
+    EXPRESSION "2"
+    STYLE
+      SYMBOL ../web/static/images/picto/pass.png
+      COLOR 0 0 0
+    END
+  END
+  
+  CLASS
+    NAME "lake"
+    EXPRESSION "3"
+    STYLE
+      SYMBOL ../web/static/images/picto/lake.png
+      COLOR 0 0 0
+    END
+  END
+
+  CLASS
+    NAME "valley"
+    EXPRESSION "4"
+    STYLE
+      SYMBOL ../web/static/images/picto/crag.png
+      COLOR 0 0 0
+    END
+  END
+
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      SYMBOL ../web/static/images/modules/summits_mini.png
+      COLOR 0 0 0
+    END
+  END
+    
+END # Layer
+
+LAYER
+  NAME huts
+  METADATA
+    "wms_title"    "huts"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom FROM huts USING UNIQUE id USING SRID=900913"
+  FILTER ("redirects_to" IS NULL)
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  CLASSITEM "shelter_type"
+  
+  CLASS
+    NAME "camp"
+    EXPRESSION "3"
+    STYLE
+      SYMBOL ../web/static/images/picto/camp.png
+      COLOR 0 0 0
+    END
+  END
+  
+  CLASS
+    NAME "gite"
+    EXPRESSION "5"
+    STYLE
+      SYMBOL ../web/static/images/picto/gite.png
+      COLOR 0 0 0
+    END
+  END
+
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      SYMBOL ../web/static/images/modules/huts_mini.png
+      COLOR 0 0 0
+    END
+  END
+END # Layer
+
+LAYER
+  NAME other_access  ## parkings without public transportations
+  METADATA
+    "wms_title"    "other_access"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom FROM parkings USING UNIQUE id USING SRID=900913"
+  FILTER ("redirects_to" IS NULL AND ("public_transportation_rating" IS NULL OR "public_transportation_rating" NOT IN (1,2,4,5)))
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  
+  # public_transportation accesses are handled by a dedicated layer
+  
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      SYMBOL ../web/static/images/modules/parkings_mini.png
+      COLOR 0 0 0
+    END
+  END
+END # Layer
+
+LAYER
+  NAME public_transportations
+  METADATA
+    "wms_title"    "public_transportations"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom FROM parkings USING UNIQUE id USING SRID=900913"
+  FILTER ("redirects_to" IS NULL AND "public_transportation_rating" IN (1,2,4,5))
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  
+  CLASS
+    NAME " "
+    STYLE
+        SYMBOL ../web/static/images/picto/parking_green.png
+        COLOR 0 0 0
+    END
+  END
+END # Layer
+
+LAYER
+  NAME sites
+  METADATA
+    "wms_title"    "sites"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom FROM sites USING UNIQUE id USING SRID=900913"
+  FILTER ("redirects_to" IS NULL)
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      SYMBOL ../web/static/images/modules/sites_mini.png
+      COLOR 0 0 0
+    END
+  END
+END # Layer
+
+LAYER
+  NAME users
+  METADATA
+    "wms_title"    "users"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom from users"
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      SYMBOL ../web/static/images/modules/users_mini.png
+      COLOR 0 0 0
+    END
+  END
+END # Layer
+
+LAYER
+  NAME images
+  METADATA
+    "wms_title"    "images"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom from images"
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      SYMBOL ../web/static/images/modules/images_mini.png
+      COLOR 0 0 0
+    END
+  END
+END # Layer
+
+LAYER
+  NAME products
+  METADATA
+    "wms_title"    "products"   ##required
+  END
+  TYPE POINT
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom from products"
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  OPACITY ALPHA
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      SYMBOL ../web/static/images/modules/products_mini.png
+      COLOR 0 0 0
+    END
+  END
+END # Layer
+
+LAYER
+  NAME routes
+  METADATA
+    "wms_title"    "routes"   ##required
+  END
+  TYPE LINE
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom FROM routes USING UNIQUE id USING SRID=900913"
+  FILTER ("redirects_to" IS NULL)
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      OUTLINECOLOR 255 100 0
+      WIDTH 2
+    END
+  END
+END # Layer
+
+LAYER
+  NAME ranges
+  METADATA
+    "wms_title"    "ranges"   ##required
+  END
+  TYPE POLYGON
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom from areas"
+  FILTER "area_type=1"
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      OUTLINECOLOR 0 255 0
+      WIDTH 2
+    END
+  END
+END # Layer
+
+LAYER
+  NAME countries
+  METADATA
+    "wms_title"    "countries"   ##required
+  END
+  TYPE POLYGON
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom from areas"
+  FILTER "area_type=2"
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      OUTLINECOLOR 255 100 0
+      WIDTH 2
+    END
+  END
+END # Layer
+
+LAYER
+  NAME admin_limits
+  METADATA
+    "wms_title"    "admin_limits"   ##required
+  END
+  TYPE POLYGON
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom from areas"
+  FILTER "area_type=3"
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      OUTLINECOLOR 255 255 0
+      WIDTH 2
+    END
+  END
+END # Layer
+
+LAYER
+  NAME maps
+  METADATA
+    "wms_title"    "maps"   ##required
+  END
+  TYPE POLYGON
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom from maps"
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      OUTLINECOLOR 0 155 255
+      WIDTH 2
+    END
+  END
+END # Layer
+
+LAYER
+  NAME outings
+  METADATA
+    "wms_title"    "outings"   ##required
+  END
+  TYPE LINE
+  STATUS ON
+  CONNECTIONTYPE postgis
+  CONNECTION "user=@DB_USER@ password=@DB_PASS@ host=@DB_HOST@ dbname=@DB_NAME@ port=@DB_PORT@"
+  DATA "geom FROM outings USING UNIQUE id USING SRID=900913"
+  FILTER ("redirects_to" IS NULL)
+  PROJECTION
+    "init=epsg:900913"   ##mandatory
+  END
+  CLASS
+    NAME " "  ## hack not to avoid having a label in legends 
+    STYLE
+      OUTLINECOLOR 255 153 51
+      WIDTH 2
+    END
+  END
+END # Layer
+
+OUTPUTFORMAT
+  NAME "pnga"
+  MIMETYPE "image/png"
+  DRIVER "AGG/PNG"
+  EXTENSION "png"
+  IMAGEMODE "RGBA"
+  TRANSPARENT TRUE
+  FORMATOPTION "INTERLACE=OFF"
+END
+
+#OUTPUTFORMAT
+#  NAME png
+#  DRIVER "GD/PNG"
+#  MIMETYPE "image/png"
+#  IMAGEMODE PC256
+#  EXTENSION "png"
+#END
+
+END # Map File

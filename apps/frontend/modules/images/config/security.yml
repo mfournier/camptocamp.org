@@ -1,0 +1,8 @@
+upload:
+  is_secure:   on       # must be logged in
+
+jsupload:
+  is_secure:   on
+
+addtempimage:
+  is_secure:  on

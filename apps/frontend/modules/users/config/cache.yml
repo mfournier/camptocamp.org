@@ -1,0 +1,56 @@
+# we do not cache some actions :
+signUp:
+  enabled: off
+
+editPrivateData:
+  enabled: off
+
+manageimages:
+  enabled: off
+
+executeDiff: # not cached for privacy reasons
+  enabled: off
+
+executeHistory: # not cached for privacy reasons
+  enabled: off
+
+customize:
+  enabled: off
+  
+sortPreferedLanguages:
+  enabled: off
+
+savePref:
+  enabled: off
+
+mailinglists:
+  enabled: off
+  
+# but we cache other actions :
+contact:
+  enabled: on
+
+login:
+  enabled: on
+  
+view:
+  enabled: on
+
+# and we do not cache partials (not worth) :
+_logged_in:
+  enabled: off
+
+_loginFields:
+  enabled: off
+
+_loginForm:
+  enabled: off
+
+_filter_form:
+  enabled: off
+
+_feature:
+  enabled: off
+
+filter:
+  enabled: off

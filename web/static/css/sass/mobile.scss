@@ -1,0 +1,7 @@
+// css specific for mobile version
+$pixelratio: 1;
+$mobile: true;
+
+@import "blob";
+@import "mobile_main";
+@import "outing_wizard";

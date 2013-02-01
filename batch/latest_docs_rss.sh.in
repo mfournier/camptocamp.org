@@ -1,0 +1,5 @@
+TMP=$(mktemp)
+curl -s -H "Host: @SERVER_NAME@" http://localhost/documents/latest > $TMP
+chmod 644 $TMP
+test -s $TMP && mv $TMP @SF_PROJECTS_DIR@/camptocamp.org/web/static/rss/latest_docs.rss
+rm -f $TMP

@@ -1,0 +1,38 @@
+fields:
+  password:
+    group:            password_group
+  new_password:
+    group:            password_group
+    sfCompareValidator:
+      check:          password
+      compare_error:  The two passwords do not match      
+  
+  email:
+    required:       yes
+      msg:          You must specify an email
+    sfEmailValidator:
+      strict:       true
+      email_error:  This email address is invalid
+    myUniqueValidator:
+      class:        UserPrivateData
+      column:       email
+      unique_error: This email already exists. Please choose another one.
+  
+  edit_nickname:
+    required:       yes
+      msg:          You must specify a nickname
+    myForumNameValidator:
+      class:        UserPrivateData
+      column:       username
+      nickname_unique_error: This nickname already exists. Please choose another one.
+  
+  edit_topo_name:
+    required:       yes
+      msg:          You must specify a topo name
+    sfStringValidator:
+      min:          3
+      min_error:    this name is too short (3 characters minimum)
+    myTopoNameValidator:
+      class:        UserPrivateData
+      column:       topo_name
+      topo_name_unique_error: This topo name already exists. Please choose another one.

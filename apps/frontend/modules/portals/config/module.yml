@@ -1,0 +1,12 @@
+all:
+  sort:
+    criteria:
+      'id': ID
+      'wnam': name
+      'act':  activities
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+    filled_criteria:

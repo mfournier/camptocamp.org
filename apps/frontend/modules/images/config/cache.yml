@@ -1,0 +1,48 @@
+# we do not cache partials (not worth) :
+_inline_form:
+  enabled: off
+
+upload:
+  enabled: off
+
+jsupload:
+  enabled: off
+  
+_file_form:
+  enabled: off
+  
+_latest:
+  enabled: off
+
+_filter_form:
+  enabled: off 
+
+_license:
+  enabled: off
+
+_feature:
+  enabled: off
+
+filter:
+  enabled: off
+
+addtempimage:
+  enabled: off
+
+addpltempimage:
+  enabled: off
+
+_plupload:
+  enabled: off
+
+_jsupload:
+  enabled: off
+
+_temp_image_success:
+  enabled: off
+
+_temp_image_error:
+  enabled: off
+
+_linked_images:
+  enabled: off

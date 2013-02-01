@@ -1,0 +1,10 @@
+# @BLURB@
+
+NameVirtualHost *:80
+<VirtualHost *:80>
+ DocumentRoot "@SF_PROJECTS_DIR@/@PROJECT_NAME@/web"
+ ServerName @SERVER_NAME@
+
+ Include @SF_PROJECTS_DIR@/@PROJECT_NAME@/config/camptocamp.org.conf
+
+</VirtualHost>

@@ -1,0 +1,135 @@
+all:
+  hut_statuses:
+    list:
+      0:
+      2: opened staffed
+      4: opened unstaffed
+      6: closed hut
+
+  frequentation_statuses:
+    list:
+      0:
+      1: desert
+      2: some people
+      4: quite crowded
+      3: lots of people
+
+  conditions_statuses:
+    list:
+      0:
+      1: excellent conditions
+      2: good conditions
+      3: mean conditions
+      4: poor conditions
+      5: awful conditions
+
+  access_statuses:
+    list:
+      0:
+      2: cleared road
+      4: snowy road
+      6: closed road
+  
+  lift_statuses:
+    list:
+      0:
+      2: opened lift
+      4: closed lift
+
+  glacier_statuses:
+    list:
+      0:
+      2: easy crossing
+      4: possible crossing
+      6: difficult crossing
+      8: impossible crossing
+
+  track_statuses:
+    list:
+      0:
+      1: good track
+      2: mean track
+      3: poor track
+
+  conditions_levels:
+    fields:
+      1: level_place
+      2: level_snow_height_soft
+      3: level_snow_height_total
+      4: level_comment
+
+  sort:
+    criteria:
+      'id': ID
+      'onam': name
+      'act':  activities
+      'date': date short
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+      'alt':  max_elevation
+      'fac': facing
+      'hdif': height_diff_up
+      'ddif': height_diff_down
+      'time': duration
+      'ralt': difficulties_start_elevation
+      'dhei': difficulties_height
+      'grat': global_rating
+      'erat': engagement_rating
+      'prat': equipment_rating
+      'frat': rock_free_rating
+      'rrat': rock_required_rating
+      'arat': aid_rating
+      'irat': ice_rating
+      'mrat': mixed_rating
+      'trat': toponeige_technical_rating
+      'expo': toponeige_exposition_rating
+      'lrat': labande_global_rating
+      'srat': labande_ski_rating
+      'hrat': hiking_rating
+      'wrat': snowshoeing_rating
+      'cond': conditions_status
+    route_criteria: [ 'fac', 'time', 'ralt', 'dhei', 'grat', 'erat', 'prat', 'frat', 'rrat', 'arat', 'irat', 'mrat', 'trat', 'expo', 'lrat', 'srat', 'hrat', 'wrat' ]
+    filled_criteria:
+      'alt':  oalt
+      'hdif': odif
+      'ddif': oddif
+      'cond': ocond
+      'fac': ''
+      'time': ''
+      'ralt': ''
+      'dhei': ''
+      'grat': ''
+      'erat': ''
+      'prat': ''
+      'frat': ''
+      'rrat': ''
+      'arat': ''
+      'irat': ''
+      'mrat': ''
+      'trat': ''
+      'expo': ''
+      'lrat': ''
+      'srat': ''
+      'hrat': ''
+      'wrat': ''
+  
+  recent_conditions_limit: 3W
+
+  # duplicated from routes config, so that it can be used
+  # as a search criteria for outings
+  sub_activities:
+    list:
+      0:
+      2: snowboard
+      4: beginner_proof
+      6: vtt_approach
+      8: lift_approach
+  
+  activities_type:
+    list:
+      0:
+      1: 'for outings'
+      2: 'for linked routes'

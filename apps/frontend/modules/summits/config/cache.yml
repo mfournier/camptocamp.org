@@ -1,0 +1,20 @@
+_summits_filter:
+  enabled: off
+
+_summits_short_filter:
+  enabled: off
+
+_filter_form:
+  enabled: off
+
+_linked_summits:
+  enabled: off
+
+_feature:
+  enabled: off
+
+filter:
+  enabled: off
+
+popupSuccess:
+  enabled: on

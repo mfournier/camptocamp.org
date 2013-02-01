@@ -1,0 +1,28 @@
+all:
+  ml_owner: listowner@camptocamp.org
+  mailinglists:
+    values: [ 'avalanche', 'lawinen', 'valanghe', 'avalanche.en', 'meteofrance-38', 'meteofrance-74', 'meteofrance-73', 'meteofrance-04', 'meteofrance-05', 'meteofrance-06', 'meteofrance-31', 'meteofrance-64', 'meteofrance-65', 'meteofrance-66', 'meteofrance-09', 'meteofrance-andorre', 'meteofrance-2a', 'meteofrance-2b', 'aran' ]
+
+  sort:
+    criteria:
+      'id': ID
+      'unam': topoguidename
+      'ufnam': nick_name
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+      'act':  activities
+      'ucat': category
+    filled_criteria:
+      'act': ''
+      'ucat': ''
+
+  category:
+    list:
+      0:
+      1: amateur
+      2: pro
+      3: club
+      4: institution

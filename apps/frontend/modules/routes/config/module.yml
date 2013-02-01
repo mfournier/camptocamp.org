@@ -1,0 +1,105 @@
+# some lists have been transfered in app.yml.in because they are used in other modules
+# (SF module-dedicated config is only available within the module frame)
+all:
+  durations:
+    list:
+      0:
+      1: 1/2
+      2: '1'
+      4: 2
+      6: 3
+      8: 4
+      10: 5
+      12: 6
+      14: 7
+      16: 8
+      18: 9
+      20: 10
+      22: 10+
+
+  route_types:
+    list:
+      0:
+      1: return_same_way
+      2: loop
+      3: traverse
+
+  configurations:
+    list:
+      0: 
+      1: config edge
+      5: config pillar
+      3: config face
+      2: config corridor
+      4: config goulotte
+      7: config glacier
+      
+  sub_activities:
+    list:
+      0:
+      2: snowboard
+      4: beginner_proof
+      6: vtt_approach
+      8: lift_approach
+
+  myroutes:
+    list:
+      0:
+      1: already taken
+      2: never taken
+
+  sort:
+    criteria:
+      'id': ID
+      'rnam': name 
+      'act': activities
+      'range': ranges
+      'admin': admin_limits
+      'country': countries
+      'lat': 'location S >> N'
+      'lon': 'location W >> E'
+      'maxa': max_elevation
+      'fac': facing
+      'hdif': height_diff_up
+      'ddif': height_diff_down
+      'time': duration
+      'ralt': difficulties_start_elevation
+      'dhei': difficulties_height
+      'grat': global_rating
+      'erat': engagement_rating
+      'prat': equipment_rating
+      'frat': rock_free_rating
+      'rrat': rock_required_rating
+      'arat': aid_rating
+      'irat': ice_rating
+      'mrat': mixed_rating
+      'trat': toponeige_technical_rating
+      'expo': toponeige_exposition_rating
+      'lrat': labande_global_rating
+      'srat': labande_ski_rating
+      'hrat': hiking_rating
+      'wrat': snowshoeing_rating
+      'rlen': route_length
+    route_criteria: [ 'fac', 'time', 'ralt', 'dhei', 'grat', 'erat', 'prat', 'frat', 'rrat', 'arat', 'irat', 'mrat', 'trat', 'expo', 'lrat', 'srat', 'hrat', 'wrat' ]
+    filled_criteria:
+      'maxa': malt
+      'hdif':
+      'ddif':
+      'time':
+      'ralt':
+      'dhei':
+      'grat':
+      'erat':
+      'prat':
+      'frat':
+      'rrat':
+      'arat':
+      'irat':
+      'mrat':
+      'trat':
+      'expo':
+      'lrat':
+      'srat':
+      'hrat':
+      'wrat':
+      'rlen':

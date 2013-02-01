@@ -1,0 +1,14 @@
+_latest:
+  enabled: off
+
+_filter_form:
+  enabled: off 
+
+filter:
+  enabled: off
+
+_association:
+  enabled: off
+
+_license:
+  enabled: off

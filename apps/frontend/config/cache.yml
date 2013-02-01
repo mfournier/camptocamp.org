@@ -1,0 +1,108 @@
+default:
+  enabled:     on
+  with_layout: false
+  lifetime: 2600000
+# 86400 = 1 day  
+# 2592000 = 1 month 
+# 1181662199 = 37 years
+
+view:
+  enabled:   on
+
+ViewCurrent:
+  enabled: off
+
+preview:
+  enabled: off
+
+comment:
+  enabled: off
+
+list:
+  enabled: off
+
+geojson:
+  enabled: off
+
+rss:
+  enabled: on
+  lifetime: 3600
+
+widget:
+  enabled: on
+  lifetime: 3600
+
+history:
+  enabled:  on
+
+diff:
+  enabled:  off
+
+whatsnew:
+  enabled: on
+  
+# we do not cache edit and feed actions :
+edit:
+  enabled:    off
+  
+feed:
+  enabled: off
+
+popup:
+  enabled: on
+
+# we do not cache partials (not worth when action caching) :
+
+_form_fields:
+  enabled: off
+
+_data:
+  enabled: off
+
+_i18n:
+  enabled: off
+  
+_list_header:
+  enabled: off
+
+_mobile_list_body:
+  enabled: off
+
+_list_body:
+  enabled: off
+  
+_list_body_changes:
+  enabled: off
+
+_jsonlist_body:
+  enabled: off
+  
+_feature:
+  enabled: off
+  
+_rss_item:
+  enabled: off
+  
+_nav:
+  enabled: off
+  
+_nav4list:
+  enabled: off
+  
+_search_form:
+  enabled: off
+
+_nav_anchor:
+  enabled:  off
+
+_list:
+  enabled: off
+
+_language_field:
+  enabled:  off 
+
+_i18n_section:
+  enabled:  off
+  
+_latest_title:
+  enabled:  off

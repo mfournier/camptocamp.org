@@ -1,0 +1,20 @@
+view:
+  lifetime: 1000000
+
+filter:
+  enabled: off
+
+_parkings_filter:
+  enabled: off
+
+_filter_form:
+  enabled: off
+
+_feature:
+  enabled: off
+
+getdirections:
+  enabled: off
+
+_parkings4list:
+  enabled: off

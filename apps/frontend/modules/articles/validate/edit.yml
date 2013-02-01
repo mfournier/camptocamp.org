@@ -1,0 +1,31 @@
+fields:
+  name:
+    required:
+      msg:          field cannot be left blank
+    sfStringValidator:
+      min:          4
+      min_error:    this name is too short (4 characters minimum)
+      max:          150
+      max_error:    this name is too long (150 characters maximum)
+  abstract:
+    required:
+      msg:          field cannot be left blank
+  categories:
+    required:
+      msg:          field cannot be left blank
+    myChoiceValidator:
+      config_choice: mod_articles_categories_list
+      unique: false
+  activities:
+    myChoiceValidator:
+      config_choice: app_activities_list
+      unique: false
+      array_exclusive: [ 0 ]
+      exclusive_choice_error: empty choice can't be selected with another choice
+  article_type:
+    required:
+      msg:          field cannot be left blank
+    myArticleTypeValidator:
+      articletype_error:   you have no right to switch from collaborative to personal article
+    myChoiceValidator:
+      config_choice: mod_articles_article_types_list

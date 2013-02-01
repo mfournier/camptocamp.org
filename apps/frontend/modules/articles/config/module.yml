@@ -1,0 +1,31 @@
+all:
+  article_types:
+    list:
+      1: collab article
+      2: personal article
+
+  categories:
+    list:
+      1: mountain environment
+      2: gear and technique
+      4: topoguide supplements
+      7: soft mobility
+      8: expeditions
+      3: stories
+      9: c2c meetings
+      10: tags
+      5: site info
+      6: association
+      100: draft
+
+  sort:
+    criteria:
+      'id': ID
+      'cnam': name
+      'act':  activities
+      'ccat': categories
+      'ctyp': article_type
+    filled_criteria:
+      'act': ''
+      'ccat': ''
+      'ctyp': ''

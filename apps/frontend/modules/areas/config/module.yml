@@ -1,0 +1,16 @@
+all:
+  area_types:
+    list:
+      0:
+      1: range
+      2: country
+      3: admin_limits
+      4: valley_area
+
+  sort:
+    criteria:
+      'id': ID
+      'anam': 'region_name'
+      'atype': 'area_type'
+    filled_criteria:
+      'atype': ''

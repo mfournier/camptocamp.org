@@ -1,0 +1,40 @@
+default:
+  is_secure: off
+
+edit:
+  is_secure:   on        # Only for authenticated users
+  
+addAssociation:
+  is_secure:   on
+
+removeAssociation:
+  is_secure:   on
+  credentials: moderator
+
+protect:
+  is_secure:    on
+  credentials:  moderator
+
+merge:
+  is_secure:    on
+  credentials:  moderator
+
+delete:
+  is_secure:    on
+  credentials:  moderator
+
+deleteculture:
+  is_secure:    on
+  credentials:  moderator
+
+deletegeom:
+  is_secure:    on
+  credentials:  moderator
+
+clearcache:
+  is_secure:    on
+  credentials:  moderator
+
+refreshgeoassociations:
+  is_secure:    on
+  credentials:  moderator

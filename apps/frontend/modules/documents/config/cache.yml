@@ -1,0 +1,165 @@
+# forum component options
+# and we do not cache partials (not worth) :
+_getMsg:
+  enabled: off
+
+# we do not cache autocomplete actions :
+autocomplete:
+  enabled: off
+
+search:
+  enabled: off
+
+quicksearch:
+  enabled: off
+  
+latestassociations:
+  enabled: on
+  lifetime: 600
+
+latest:
+  enabled: on
+  lifetime: 3600
+
+# Homepage is not cached, except for users with personnalisation set to off.
+# see how it works in MyCacheFilter.class.php file
+home:
+  enabled: off
+  lifetime: 300
+  
+_welcome:
+  enabled: on
+  lifetime: 50000
+
+insertimagetag:
+  enabled: off
+
+cdasearch:
+  enabled: off
+  
+# Cron for latest docs is every hour, so we cache it for half an hour  
+_latest_docs:
+  enabled: on
+  lifetime: 1800
+
+# but we do not cache partials (not worth) :
+_autocomplete:
+  enabled: off
+
+_maps:
+  enabled: off
+
+_map_section:
+  enabled: off
+
+_mobile_map_section:
+  enabled: off
+
+_map_i18n:
+  enabled: off
+
+_history_line:
+  enabled:  off
+
+_form_buttons:
+  enabled:  off
+
+_form_history:
+  enabled:  off
+
+_language_field:
+  enabled:  off
+
+_versions_browser:
+  enabled: off
+
+_tabs:
+  enabled: off
+
+_title:
+  enabled: off
+
+_bbcodetools:
+  enabled: off
+
+_preview:
+  enabled: off
+  
+_list_changes:
+  enabled: off
+  #lifetime: 300
+  
+_i18n_section:
+  enabled: off
+  
+_merged_warning:
+  enabled: off
+  
+_nav_left:
+  enabled: off
+  
+_nav_news:
+  enabled: off
+
+_nav_tools:
+  enabled: off
+  
+_nav4home:
+  enabled: on
+
+_nav_anchor:
+  enabled: off
+
+_images:
+  enabled: off
+
+_association:
+  enabled: off
+  
+_latest:
+  enabled: off
+  
+_latest_meta:
+  enabled: off
+
+_latest_threads:
+  enabled: off
+
+_latest_mountain_news:
+  enabled: off
+ 
+_license:
+  enabled: off
+
+_regions4list:
+  enabled: off
+  
+_oam_coords:
+  enabled: off
+
+_filter_sort:
+  enabled: off
+
+_google_search:
+  enabled: off
+
+_google_result:
+  enabled: off
+
+_home_section_title:
+  enabled: off
+
+_feature:
+  enabled: off
+
+_mobile_comments:
+  enabled: off
+
+_geom_warning:
+  enabled: off
+
+_annex_docs:
+  enabled: off
+
+_doc_infos:
+  enabled: off

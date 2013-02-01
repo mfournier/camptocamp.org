@@ -1,0 +1,365 @@
+## Every page is different, and always starts with the language parameter.
+## Symfony routing handler takes the first route that matches the
+## first route with culture, next others.
+
+homepage:
+  url: /
+  param: { module: documents, action: home }
+
+whatsnew:
+  url: /whatsnew
+  param: { module: documents, action: whatsnew }
+
+latestassociations:
+  url: /whatsnew/associations
+  param: { module: documents, action: latestassociations }
+
+latestassociations_doc:
+  url: /:module/latestassociations/id/:id
+  param: { action: latestassociations }
+  requirements: { module: (?:areas|articles|books|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users), id: \d+ }
+
+search:
+  url: /search/:q/*
+  param: { module: documents, action: search }
+
+quicksearch:
+  url: /quicksearch
+  param: { module: documents, action: quicksearch }
+
+signUp:
+  url: /signUp
+  param: { module: users, action: signUp }
+
+login:
+  url: /login
+  param: { module: users, action: login }
+
+logout:
+  url: /logout
+  param: { module: users, action: logout }
+
+sf_captcha:
+  url:   /captcha
+  param: { module: sfCaptcha, action: index }
+
+map_nodes:
+  url: /map/nodes/:layerNodes
+  param: { module: documents, action: map }
+  requirements: { layerNodes: (?:areas|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users) }
+
+map:
+  url: /map
+  param: { module: documents, action: map }
+
+tool:
+  url: /tools/:action
+  param: { module: documents }
+  requirements: { action: (?:cotometre) }
+
+trailing_forward:
+  url: /:module/
+  param: { action: list }
+
+default_index:
+  url: /:module
+  param: { action: list }
+  requirements: { module: (?:areas|articles|books|documents|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users) }
+  
+quick_activity:
+  url: /switch/activity/to/:activity
+  param: { module: common, action: customize }
+  requirements: {  activity: \d+ }
+
+switch_culture_interface:
+  url: /users/setCultureInterface/:lang
+  param: { module: users, action: setCultureInterface }
+  requirements: { lang: (?:ca|de|en|es|fr|it|eu) }
+  
+module_whatsnew:
+  url: /:module/whatsnew
+  param: { action: whatsnew }
+
+filter:
+  url: /:module/filter
+  param: { action: filter }
+
+goto_next:
+  url: /:module/next/:id
+  param: { action: next }
+  requirements: { id: \d+ }
+
+goto_prev:
+  url: /:module/prev/:id
+  param: { action: prev }
+  requirements: { id: \d+ }
+
+export_gpx:
+  url: /:module/:lang/:id.gpx
+  param: { action: exportgpx}
+  requirements: { module: (?:areas|huts|images|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+export_gpx_version:
+  url: /:module/:lang/:version/:id.gpx
+  param: { action: exportgpxversion}
+  requirements: { module: (?:areas|huts|images|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, version: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+export_kml:
+  url: /:module/:lang/:id.kml
+  param: { action: exportkml}
+  requirements: { module: (?:areas|huts|images|outings|parkings|portals|products|routes|sites|summits|users|maps), id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+export_kml_version:
+  url: /:module/:lang/:version/:id.kml
+  param: { action: exportkmlversion}
+  requirements: { module: (?:areas|huts|images|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, version: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+export_json:
+  url: /:module/:lang/:id.json
+  param: { action: exportjson}
+  requirements: { module: (?:areas|huts|images|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+export_json_version:
+  url: /:module/:lang/:version/:id.json
+  param: { action: exportjsonversion}
+  requirements: { module: (?:areas|huts|images|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, version: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+creations_feed_lang:
+  url: /:module/:lang/new.rss
+  param: { action: feed, mode: creations}
+  requirements: { lang: (?:ca|de|en|es|fr|it|eu) }
+
+creations_feed:
+  url: /:module/new.rss
+  param: { action: feed, mode: creations}
+
+feed_lang:
+  url: /:module/:lang/feed.rss
+  param: { action: feed, mode: editions}
+  requirements: { lang: (?:ca|de|en|es|fr|it|eu) }
+
+feed:
+  url: /:module/feed.rss
+  param: { action: feed, mode: editions}
+ 
+document_feed:
+  url: /:module/:id/:lang/feed.rss
+  param: { action: feed }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+document_widget:
+  url: /:module/widget
+  param: {action: widget}
+  requirements: { module: (?:areas|articles|books|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users) }
+
+widget_generator:
+  url: /widgetgenerator
+  param: { action: widgetgenerator, module: documents }
+
+popup_raw:
+  url: /:module/popup/:id/raw/true
+  param: {action: popup, raw: true}
+  requirements: { id: \d+ }
+    
+popup:
+  url: /:module/popup/:id/:lang
+  param: {action: popup}
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+  
+document_list_by_page:
+  url: /:module/list/:page
+  param: { action: list }
+  requirements: { page: \d+ }
+  
+document_list_all_1:
+  url: /:module/all
+  param: { action: list, all: 1 }
+  
+document_list_all_2:
+  url: /:module/list/all
+  param: { action: list, all: 1 }
+
+document_short:
+  url: /:id
+  param: { action: view, module: documents }
+  requirements: { id: \d+ }
+  
+document_by_id:
+  url: /:module/:id
+  param: { action: view }
+  requirements: { id: \d+ }
+
+document_by_id_lang:
+  url: /:module/:id/:lang
+  param: { action: view }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+document_by_id_lang_with_trailing:
+  url: /:module/:id/:lang/
+  param: { action: view }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+document_by_id_lang_version:
+  url: /:module/:id/:lang/:version
+  param: { action: view }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu), version: \d+ }
+
+document_by_id_lang_slug:
+  url: /:module/:id/:lang/:slug
+  param: { action: view }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+document_edit:
+  url: /:module/edit/:id/:lang
+  param: { action: edit }
+  requirements: { module: (?:areas|articles|books|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+geom_delete:
+  url: /:module/deletegeom/:id
+  param: { action: deletegeom }
+  requirements: { id: \d+ }
+
+image_upload:
+  url: /images/upload/:mod/:document_id
+  param: { module: images, action: upload }
+  requirements: { mod: (?:areas|articles|books|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users), document_id: \d+ }
+
+image_jsupload:
+  url: /images/jsupload/:mod/:document_id
+  param: { module: images, action: jsupload }
+  requirements: { mod: (?:areas|articles|books|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users), document_id: \d+ }
+
+image_tag:
+  url: /insertimagetag/:mod/:id/:div
+  param: { module: documents, action: insertimagetag }
+  requirements: { mod: (?:areas|articles|books|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, div: \w+ }
+
+hut_addroute:
+  url: /huts/addroute/:document_id
+  param: { module: huts, action: addroute }
+  requirements: { document_id: \d+ }
+
+user_manage_images:
+  url: /users/manageimages
+  param: {module: users, action: manageimages }
+
+user_save_pref:
+  url: /users/savepref
+  param: { module: users, action: savePref }
+
+user_edit:
+  url: /users/editprivatedata
+  param: { module: users, action: editPrivateData }
+
+mypage:
+  url: /users/mypage
+  param: { module: users, action: myPage }
+
+myoutings:
+  url: /outings/myoutings
+  param: { module: outings, action: myOutings }
+
+mystats:
+  url: /outings/mystats
+  param: { module: outings, action: myStats }
+
+myimages:
+  url: /images/myimages
+  param: { module: images, action: myImages }
+
+myarticles:
+  url: /articles/myarticles
+  param: { module: articles, action: myArticles }
+
+document_edit_archive:
+  url: /:module/edit/:id/:lang/:version
+  param: { action: edit }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu), version: \d+ }
+
+document_history:
+  url: /:module/history/:id/:lang
+  param: { action: history }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu)}
+
+document_comment:
+  url: /:module/comment/:id/:lang
+  param: { action: comment }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu)}
+
+document_diff:
+  url: /:module/diff/:id/:lang/:new/:old
+  param: { action: diff }
+  requirements: { module: (?:areas|articles|books|huts|images|maps|outings|parkings|portals|products|routes|sites|summits|users), id: \d+, lang: (?:ca|de|en|es|fr|it|eu), new: \d+, old: \d+ }
+
+document_diff_post:
+  url: /:module/diff/:id/:lang
+  param: { action: diff }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+doc_protect:
+  url:   /:module/protect/:id
+  param: { action: protect }
+  requirements: { id: \d+ }
+
+doc_geoass_refresh:
+  url:  /:module/refreshgeo/:id
+  param: { action: refreshgeoassociations }
+  requirements: { id: \d+ }
+
+doc_merge:
+  url:   /:module/merge/:from_id/:to_id
+  param: { action: merge }
+#  requirements: { from_id: \d+, to_id: \d+}
+
+homepage_by_activity:
+  url:   /:activity_name
+  param: { module: common, action: customize }
+  requirements: { activity_name: (?:skitouring|snow_ice_mixed|mountain_climbing|rock_climbing|ice_climbing|hiking|snowshoeing|paragliding) }
+
+culture_delete:
+  url:   /:module/delete/:id/:lang
+  param: { action: deleteculture }
+  requirements: { id: \d+, lang: (?:ca|de|en|es|fr|it|eu) }
+
+doc_delete:
+  url:   /:module/delete/:id
+  param: { action: delete }
+  requirements: { id: \d+ }
+
+cache_clear:
+  url: /:module/clearcache/:id
+  param: { action: clearcache }
+  requirements: { id: \d+ }
+
+ordered_list:
+  url: /:module/list/orderby/:orderby/order/:order
+  param: { action: list }
+
+getdirections:
+  url: /getdirections/to/:id/with/:service
+  param: { module: parkings, action: getdirections }
+  requirements: { id: \d+, service: (?:gmaps|yahoo|livesearch|openmapquest) }
+
+cda:
+  url: /cda
+  param: { module: documents, action: cda }
+
+cda_lang:
+  url: /cda/:lang
+  param: { module: documents, action: cda }
+  requirements: { lang: (?:ca|de|en|es|fr|it|eu) }
+
+cdasearch:
+  url: /cda/search
+  param: { module: documents, action: cdasearch }
+
+cdasearch_by_type:
+  url: /cda/search/type/:type
+  param: { module: documents, action: cdasearch, type: (?:routes|outings) }
+
+default:
+  url:   /:module/:action/*
+
+default_symfony:
+  url:   /symfony/:action/*
+  param: { module: default }

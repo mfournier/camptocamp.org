@@ -1,0 +1,14 @@
+_filter_form:
+  enabled: off 
+
+_linked_sites:
+  enabled: off
+
+_feature:
+  enabled: off
+
+filter:
+  enabled: off
+
+popupSuccess:
+  enabled: on

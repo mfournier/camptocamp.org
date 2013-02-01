@@ -1,0 +1,8 @@
+messageResetPasswordSuccess:
+  has_layout: no
+  
+messageSignupPasswordSuccess:
+  has_layout: no
+  
+popupSuccess:
+  layout: popup
